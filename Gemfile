@@ -6,6 +6,8 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'pg'
+gem 'thin'
 
 
 # Gems used only for assets and not required
@@ -18,6 +20,13 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+
+group :development do
+  gem 'ruby-debug19'
+  gem 'ruby-debug-base19', :git => 'https://github.com/tribune/ruby-debug-base19.git'
+  gem 'linecache19', :git => 'git@github.com:chuckg/linecache19.git', :branch => "0_5_13/dependencies"
 end
 
 gem 'jquery-rails'
