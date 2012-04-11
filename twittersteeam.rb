@@ -6,10 +6,10 @@ require 'twitter/json_stream'
 
 EventMachine::run {
   stream = Twitter::JSONStream.connect(
-    :path    => '/1/statuses/filter.json',
+    :path    => '/1/statuses/sample.json',
     :auth    => 'nutevents:northwestern',
-    :method  => 'POST',
-    :content => 'track=soccer'
+    :method  => 'GET',
+    #:content => 'track=ankees,yanks,nyy,bombers'
   )
 
   stream.each_item do |item|
