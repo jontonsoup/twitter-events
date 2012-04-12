@@ -3,7 +3,7 @@ lib_path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift lib_path unless $LOAD_PATH.include?(lib_path)
 
 require 'twitter/json_stream'
-
+ticker = 0
 EventMachine::run {
   stream = Twitter::JSONStream.connect(
     :path    => '/1/statuses/sample.json',
@@ -15,7 +15,8 @@ EventMachine::run {
   stream.each_item do |item|
     $stdout.print "#{item}\n"
     $stdout.flush
-    puts "\n"
+    ticker = ticker + 1
+    puts " \n" + ticker.to_s + "\n"
   end
 
   stream.on_error do |message|
