@@ -4,12 +4,21 @@ $LOAD_PATH.unshift lib_path unless $LOAD_PATH.include?(lib_path)
 
 require 'twitter/json_stream'
 ticker = 0
+
+# EventMachine::run {
+#   stream = Twitter::JSONStream.connect(
+#     :path    => '/1/statuses/sample.json',
+#     :auth    => 'nutevents:northwestern',
+#     :method  => 'GET',
+#     #:content => 'track=ankees,yanks,nyy,bombers'
+#   )
+
 EventMachine::run {
   stream = Twitter::JSONStream.connect(
-    :path    => '/1/statuses/sample.json',
-    :auth    => 'nutevents:northwestern',
-    :method  => 'GET',
-    #:content => 'track=ankees,yanks,nyy,bombers'
+    :path    => '/1/statuses/filter.json',
+    :auth    => 'LOGIN:PASSWORD',
+    :method  => 'POST',
+    :content => 'track=basketball,football,baseball,footy,soccer'
   )
 
   stream.each_item do |item|
