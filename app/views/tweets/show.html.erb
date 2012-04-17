@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @tweet.text %>
+</p>
+
+<p>
+  <b>Favorited:</b>
+  <%= @tweet.favorited %>
+</p>
+
+<p>
+  <b>In reply to user id str:</b>
+  <%= @tweet.in_reply_to_user_id_str %>
+</p>
+
+<p>
+  <b>Geo:</b>
+  <%= @tweet.geo %>
+</p>
+
+<p>
+  <b>In reply to screen name:</b>
+  <%= @tweet.in_reply_to_screen_name %>
+</p>
+
+<p>
+  <b>In reply to status:</b>
+  <%= @tweet.in_reply_to_status_id %>
+</p>
+
+<p>
+  <b>In reply to user:</b>
+  <%= @tweet.in_reply_to_user_id %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @tweet.source %>
+</p>
+
+<p>
+  <b>Retweet count:</b>
+  <%= @tweet.retweet_count %>
+</p>
+
+<p>
+  <b>Truncated:</b>
+  <%= @tweet.truncated %>
+</p>
+
+<p>
+  <b>Id str:</b>
+  <%= @tweet.id_str %>
+</p>
+
+<p>
+  <b>Hashtags:</b>
+  <%= @tweet.hashtags %>
+</p>
+
+<p>
+  <b>Retweeted:</b>
+  <%= @tweet.retweeted %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%= @tweet.created_at %>
+</p>
+
+<p>
+  <b>Tweet:</b>
+  <%= @tweet.tweet_id %>
+</p>
+
+<p>
+  <b>User mentions:</b>
+  <%= @tweet.user_mentions %>
+</p>
+
+
+<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+<%= link_to 'Back', tweets_path %>

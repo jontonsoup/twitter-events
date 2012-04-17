@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  text: MyString
+  favorited: MyString
+  in_reply_to_user_id_str: MyString
+  geo: MyString
+  in_reply_to_screen_name: MyString
+  in_reply_to_status_id: MyString
+  in_reply_to_user_id: MyString
+  source: MyString
+  retweet_count: 1
+  truncated: MyString
+  id_str: 1
+  hashtags: MyString
+  retweeted: MyString
+  created_at: MyString
+  tweet_id: 1
+  user_mentions: MyString
+
+two:
+  text: MyString
+  favorited: MyString
+  in_reply_to_user_id_str: MyString
+  geo: MyString
+  in_reply_to_screen_name: MyString
+  in_reply_to_status_id: MyString
+  in_reply_to_user_id: MyString
+  source: MyString
+  retweet_count: 1
+  truncated: MyString
+  id_str: 1
+  hashtags: MyString
+  retweeted: MyString
+  created_at: MyString
+  tweet_id: 1
+  user_mentions: MyString

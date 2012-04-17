@@ -1,0 +1,81 @@
+<%= form_for(@tweet) do |f| %>
+  <% if @tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+      <ul>
+      <% @tweet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :favorited %><br />
+    <%= f.text_field :favorited %>
+  </div>
+  <div class="field">
+    <%= f.label :in_reply_to_user_id_str %><br />
+    <%= f.text_field :in_reply_to_user_id_str %>
+  </div>
+  <div class="field">
+    <%= f.label :geo %><br />
+    <%= f.text_field :geo %>
+  </div>
+  <div class="field">
+    <%= f.label :in_reply_to_screen_name %><br />
+    <%= f.text_field :in_reply_to_screen_name %>
+  </div>
+  <div class="field">
+    <%= f.label :in_reply_to_status_id %><br />
+    <%= f.text_field :in_reply_to_status_id %>
+  </div>
+  <div class="field">
+    <%= f.label :in_reply_to_user_id %><br />
+    <%= f.text_field :in_reply_to_user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :retweet_count %><br />
+    <%= f.number_field :retweet_count %>
+  </div>
+  <div class="field">
+    <%= f.label :truncated %><br />
+    <%= f.text_field :truncated %>
+  </div>
+  <div class="field">
+    <%= f.label :id_str %><br />
+    <%= f.number_field :id_str %>
+  </div>
+  <div class="field">
+    <%= f.label :hashtags %><br />
+    <%= f.text_field :hashtags %>
+  </div>
+  <div class="field">
+    <%= f.label :retweeted %><br />
+    <%= f.text_field :retweeted %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br />
+    <%= f.text_field :created_at %>
+  </div>
+  <div class="field">
+    <%= f.label :tweet_id %><br />
+    <%= f.number_field :tweet_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_mentions %><br />
+    <%= f.text_field :user_mentions %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
