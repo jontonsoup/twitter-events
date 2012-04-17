@@ -20,7 +20,7 @@ EventMachine::run {
     :path    => '/1/statuses/filter.json',
     :auth    => 'nutevents:northwestern',
     :method  => 'POST',
-    :content => 'track=basketball,football,baseball,footy,soccer'
+    :content => 'track=The Riviera, fray, The Fray, Fray, Riv, The Riv, riviera, Jessie Baylin, Baylin, How to Save a Life, Isaac Slade, Joe King,Dave Welsh, Ben Wysocki, Jeremy McCoy, Wysocki, TheFray, TheRiviera, TheRiv, JessieBaylin'
     )
 
   stream.each_item do |item|
