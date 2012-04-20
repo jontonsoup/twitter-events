@@ -17,8 +17,19 @@ class CreateTweets < ActiveRecord::Migration
       t.string :created_at
       t.integer :tweet_id
       t.string :user_mentions
+      t.integer :geo_long
+      t.intege :geo_lat
+      t.integer :statuses_count
+      t.string :country
+      t.string :possibly_sensitive
+      t.string :expanded_url
+      t.string :verified
+      t.integer :friends_count
+      t.string :screenname
+      t.string :user_home_location
+      t.id :id_n
 
       t.timestamps
-    end
-  end
+end
+end
 end
