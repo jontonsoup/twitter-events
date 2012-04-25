@@ -18,7 +18,7 @@ class CreateTweets < ActiveRecord::Migration
       t.integer :tweet_id
       t.string :user_mentions
       t.integer :geo_long
-      t.intege :geo_lat
+      t.integer :geo_lat
       t.integer :statuses_count
       t.string :country
       t.string :possibly_sensitive
@@ -27,7 +27,11 @@ class CreateTweets < ActiveRecord::Migration
       t.integer :friends_count
       t.string :screenname
       t.string :user_home_location
-      t.id :id_n
+      t.integer :id_n
+      t.integer :scoreo
+      t.integer :scoretw
+      t.integer :scoretr
+      t.integer :scoref
 
       t.timestamps
 end

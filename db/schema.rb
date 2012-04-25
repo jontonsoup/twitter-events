@@ -30,6 +30,21 @@ ActiveRecord::Schema.define(:version => 20120417191250) do
     t.string   "created_at",              :null => false
     t.integer  "tweet_id"
     t.string   "user_mentions"
+    t.integer  "geo_long"
+    t.integer  "geo_lat"
+    t.integer  "statuses_count"
+    t.string   "country"
+    t.string   "possibly_sensitive"
+    t.string   "expanded_url"
+    t.string   "verified"
+    t.integer  "friends_count"
+    t.string   "screenname"
+    t.string   "user_home_location"
+    t.integer  "id_n"
+    t.integer  "scoreo"
+    t.integer  "scoretw"
+    t.integer  "scoretr"
+    t.integer  "scoref"
     t.datetime "updated_at",              :null => false
   end
 
