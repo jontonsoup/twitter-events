@@ -41,12 +41,12 @@
     #:geo_long => parsed_json["geo_long"],
     #:geo_lat => parsed_json["geo_lat"],
       :statuses_count => parsed_json["user"]["statuses_count"],
-      :country => parsed_json["user"]["location"]
+      :country => parsed_json["user"]["location"],
      #not real? :possibly_sensitive => parsed_json["possibly_sensitive"],
      # :url => parsed_json["user"]["url"],
-     # :verified => parsed_json["user"]["verified"]
-     # :friends_count => parsed_json["user"]["friends_count"],
-     # :screenname => parsed_json["screenname"],
+      :verified => parsed_json["user"]["verified"],
+     :friends_count => parsed_json["user"]["friends_count"],
+      :screenname => parsed_json["screenname"]
     # :user_home_location => parsed_json["user_home_location"]
       })
 puts "\n"
