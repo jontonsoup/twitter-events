@@ -8,9 +8,11 @@
     EventMachine::run {
       stream = Twitter::JSONStream.connect(
         :path    => '/1/statuses/filter.json',
-        :auth    => 'nutevents:northwestern',
+        :auth    => 'nutevents1:northwestern',
         :method  => 'POST',
-        :content => "track=barack%20obama,north%20korea"
+        :content => "track=m83,Anthony%20Gonzalez,Yann%20Gonzalez,Morgan%20Kibby,Loic%20Maurin,Jordan%20Lawlor,Midnight%20City
+        locations=-122.75,36.8,-121.75,37.8,-74,40,-73,41
+        follow=1450671755,2165364307,2006188059,16,20,87"
         )
 
       stream.each_item do |item|
@@ -24,7 +26,7 @@
     :text => parsed_json["text"],
     :favorited => parsed_json["favorited"],
     :in_reply_to_user_id_str => parsed_json["in_reply_to_user_id_str"],
-    #:geo => "null",
+    #:geo => "null",an
     :in_reply_to_screen_name => parsed_json["in_reply_to_screen_name"],
     :in_reply_to_status_id => parsed_json["in_reply_to_status_id"],
     :in_reply_to_user_id => parsed_json["in_reply_to_user_id"],
