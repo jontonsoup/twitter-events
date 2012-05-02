@@ -32,6 +32,9 @@ class CreateTweets < ActiveRecord::Migration
       t.integer :scoretw
       t.integer :scoretr
       t.integer :scoref
+      t.boolean :first_pass
+      t.boolean :second_pass
+      t.boolean :third_pass
 
       t.timestamps
 end
