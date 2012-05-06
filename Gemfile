@@ -9,6 +9,11 @@ gem 'pg'
 gem 'thin'
 gem 'twitter-bootstrap-rails'
 gem 'twitter-stream'
+gem 'instagram',  :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
+gem 'therubyracer'
+gem 'nokogiri'
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
