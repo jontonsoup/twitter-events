@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20120417191250) do
     t.boolean  "first_pass"
     t.boolean  "second_pass"
     t.boolean  "third_pass"
+    t.string   "image"
     t.datetime "updated_at",              :null => false
   end
 
