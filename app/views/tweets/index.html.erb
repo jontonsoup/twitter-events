@@ -1,54 +1,51 @@
-<h1>Listing tweets</h1>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Twitter Events</a>
+        <div class="nav-collapse">
+            <ul class="nav">
+              <!-- <li class="active"><a href="#">Home</a></li> -->
+
+          </ul>
+      </div><!--/.nav-collapse -->
+  </div>
+</div>
+</div>
+
 <div class="container">
-<table>
-  <tr>
-    <th>Text</th>
-    <th>Favorited</th>
-    <th>In reply to user id str</th>
-    <th>Geo</th>
-    <th>In reply to screen name</th>
-    <th>In reply to status</th>
-    <th>In reply to user</th>
-    <th>Source</th>
-    <th>Retweet count</th>
-    <th>Truncated</th>
-    <th>Id str</th>
-    <th>Hashtags</th>
-    <th>Retweeted</th>
-    <th>Created at</th>
-    <th>Tweet</th>
-    <th>User mentions</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @tweets.each do |tweet| %>
-  <tr>
-    <td><%= tweet.text %></td>
-    <td><%= tweet.favorited %></td>
-    <td><%= tweet.in_reply_to_user_id_str %></td>
-    <td><%= tweet.geo %></td>
-    <td><%= tweet.in_reply_to_screen_name %></td>
-    <td><%= tweet.in_reply_to_status_id %></td>
-    <td><%= tweet.in_reply_to_user_id %></td>
-    <td><%= tweet.source %></td>
-    <td><%= tweet.retweet_count %></td>
-    <td><%= tweet.truncated %></td>
-    <td><%= tweet.id_str %></td>
-    <td><%= tweet.hashtags %></td>
-    <td><%= tweet.retweeted %></td>
-    <td><%= tweet.created_at %></td>
-    <td><%= tweet.tweet_id %></td>
-    <td><%= tweet.user_mentions %></td>
-    <td><%= link_to 'Show', tweet %></td>
-    <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-    <td><%= link_to 'Destroy', tweet, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="hero-unit">
+    <h1>Tweets</h1>
+    <div class="container">
+        <table>
 
-<br />
 
-<%= link_to 'New Tweet', new_tweet_path %>
+            <% @tweets.each do |tweet| %>
+                <% if tweet.first_pass %>
+                <tr>
+                    <td><%= tweet.text %></td>
+                    <td>
+                        <div class="thumbnail span3">
+                            <img src="<%= tweet.image %>">
+                        </div>
+                    </td>
+                </tr>
+                <% end %>
+            <% end %>
+        </table>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Twitter Events</p>
+    </footer>
+
 </div>
