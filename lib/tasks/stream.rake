@@ -59,9 +59,38 @@ task :stream => :environment do
 rescue
 end
 puts "\n"
-end
 
-stream.on_error do |message|
+
+#parse instagram and strip bad data from tweets
+tweets = Tweet.where("first_pass is null OR second_pass is null")
+tweets.each do |tweet|
+  if tweet.source.downcase.include? 'instagram'
+    tweet.first_pass = true
+    tweet.save
+      #puts tweet.text
+
+      begin
+        doc = Nokogiri::HTML(open(tweet.expanded_url))
+
+          #get image path from instagram document
+          doc.xpath("//img[@class='photo']/@src").each do |img|
+            puts img
+            Tweet.update(tweet.id, :image => img.to_s)
+          end
+        rescue
+        end
+      end
+      tweet.second_pass = true
+      tweet.text = tweet.text.gsub(/\s[R][T]\s/, '')
+      tweet.text = tweet.text.gsub(/#\s*\w+|\d+/, '')
+      tweet.text = tweet.text.gsub(/@\s*\w+|\d+/, '')
+      tweet.text = tweet.text.gsub(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/, '')
+      tweet.save
+    end
+
+  end
+
+  stream.on_error do |message|
       #$stdout.print "error: #{message}\n"
       #$stdout.flush
     end

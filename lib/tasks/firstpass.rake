@@ -8,7 +8,7 @@ lib_path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift lib_path unless $LOAD_PATH.include?(lib_path)
 
 task :firstpass => :environment do
-  tweets = Tweet.all
+  tweets = Tweet.where("first_pass is null OR second_pass is null")
   tweets.each do |tweet|
     if tweet.source.downcase.include? 'instagram'
       tweet.first_pass = true

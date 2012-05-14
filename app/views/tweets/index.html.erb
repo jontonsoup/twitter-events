@@ -7,45 +7,53 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="#">Twitter Events</a>
-        <div class="nav-collapse">
+          </a>
+          <a class="brand" href="#">Twitter Events</a>
+          <div class="nav-collapse">
             <ul class="nav">
               <!-- <li class="active"><a href="#">Home</a></li> -->
 
-          </ul>
-      </div><!--/.nav-collapse -->
-  </div>
-</div>
-</div>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-<div class="container">
-
-  <div class="hero-unit">
-    <h1>Tweets</h1>
     <div class="container">
-        <table>
+
+      <div class="hero-unit">
+        <h1>Tweets</h1>
+        <div class="container">
+          <table class="table-striped table-bordered">
 
 
             <% @tweets.each do |tweet| %>
-                <% if tweet.first_pass %>
-                <tr>
-                    <td><%= tweet.text %></td>
-                    <td>
-                        <div class="thumbnail span4">
-                            <img src="<%= tweet.image %>">
-                        </div>
-                    </td>
-                </tr>
-                <% end %>
+            <% if tweet.first_pass %>
+            <tr>
+              <td><%= tweet.text %></td>
+              <td>
+                <div class="thumbnail span4">
+                  <img src="<%= tweet.image %>">
+                </div>
+              </td>
+            </tr>
             <% end %>
-        </table>
-    </div>
+            <% end %>
 
-    <hr>
+            <% @tweets.each do |tweet| %>
+            <% if tweet.second_pass %>
+            <tr>
+              <td><%= tweet.text %></td>
+            </tr>
+            <% end %>
+            <% end %>
+          </table>
+        </div>
 
-    <footer>
-        <p>&copy; Twitter Events</p>
-    </footer>
+        <hr>
 
-</div>
+        <footer>
+          <p>&copy; Twitter Events</p>
+        </footer>
+
+      </div>
