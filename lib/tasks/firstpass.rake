@@ -13,19 +13,25 @@ task :firstpass => :environment do
     if tweet.source.downcase.include? 'instagram'
       tweet.first_pass = true
       tweet.save
-      puts tweet.text
+      #puts tweet.text
 
       begin
-          doc = Nokogiri::HTML(open(tweet.expanded_url))
+        doc = Nokogiri::HTML(open(tweet.expanded_url))
 
           #get image path from instagram document
           doc.xpath("//img[@class='photo']/@src").each do |img|
             puts img
-              Tweet.update(tweet.id, :image => img.to_s)
+            Tweet.update(tweet.id, :image => img.to_s)
           end
-      rescue
+        rescue
+        end
       end
-
+      puts tweet.text
+      tweet.text = tweet.text.gsub(/\s[R][T]\s/, '')
+      tweet.text = tweet.text.gsub(/#\s*\w+|\d+/, '')
+      tweet.text = tweet.text.gsub(/@\s*\w+|\d+/, '')
+      tweet.text = tweet.text.gsub(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/, '')
+      puts tweet.text
+      tweet.save
+    end
   end
-end
-end

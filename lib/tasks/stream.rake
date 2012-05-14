@@ -12,7 +12,7 @@ task :stream => :environment do
       :path    => '/1/statuses/filter.json',
       :auth    => 'nutevents1:northwestern',
       :method  => 'POST',
-      :content => "track=instagram"
+      :content => "track=hot"
       )
 
     stream.each_item do |item|
@@ -23,14 +23,14 @@ task :stream => :environment do
       # This is for saving to the rails database
       expanded = nil
       begin
-            expanded = parsed_json["entities"]["urls"][0]["expanded_url"]
+        expanded = parsed_json["entities"]["urls"][0]["expanded_url"]
       rescue
       end
-
-      Tweet.create({
-        :text => parsed_json["text"],
-        :favorited => parsed_json["favorited"],
-        :in_reply_to_user_id_str => parsed_json["in_reply_to_user_id_str"],
+      begin
+        Tweet.create({
+          :text => parsed_json["text"],
+          :favorited => parsed_json["favorited"],
+          :in_reply_to_user_id_str => parsed_json["in_reply_to_user_id_str"],
         #:geo => "null",an
         :in_reply_to_screen_name => parsed_json["in_reply_to_screen_name"],
         :in_reply_to_status_id => parsed_json["in_reply_to_status_id"],
@@ -56,10 +56,12 @@ task :stream => :environment do
         :screenname => parsed_json["screenname"]
         # :user_home_location => parsed_json["user_home_location"]
         })
+rescue
+end
 puts "\n"
-    end
+end
 
-    stream.on_error do |message|
+stream.on_error do |message|
       #$stdout.print "error: #{message}\n"
       #$stdout.flush
     end
