@@ -12,7 +12,7 @@ task :stream => :environment do
       :path    => '/1/statuses/filter.json',
       :auth    => 'nutevents:northwestern',
       :method  => 'POST',
-      :content => "track=OKC,lakers,laker,thunder,kobe,bynum,durant,perkins,gasol,ibaka,Chesapeake%20Energy%20Arena"
+      :content => "track=beautiful"
       )
 
     stream.each_item do |item|
