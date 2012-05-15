@@ -12,6 +12,7 @@ gem 'twitter-stream'
 gem 'instagram',  :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
 gem 'therubyracer'
 gem 'nokogiri'
+gem 'sinatra'
 
 
 # Gems used only for assets and not required

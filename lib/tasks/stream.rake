@@ -10,13 +10,13 @@ task :stream => :environment do
   EventMachine::run {
     stream = Twitter::JSONStream.connect(
       :path    => '/1/statuses/filter.json',
-      :auth    => 'nutevents1:northwestern',
+      :auth    => 'nutevents:northwestern',
       :method  => 'POST',
-      :content => "track=hot"
+      :content => "track=OKC,lakers,laker,thunder,kobe,bynum,durant,perkins,gasol,ibaka,Chesapeake%20Energy%20Arena"
       )
 
     stream.each_item do |item|
-      $stdout.print "#{item}\n,"
+      #$stdout.print "#{item}\n,"
       $stdout.flush
       parsed_json = ActiveSupport::JSON.decode(item)
 
