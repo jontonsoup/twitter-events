@@ -22,7 +22,7 @@ $(function () {
 });
 
 function updatetweets() {
-    var after = $('#tweets tr:last').attr('data-time');
+    var after = $('#tweets tr:first').attr('data-time');
     $.getScript('/tweets.js?after=' + after);
     setTimeout(updatetweets, 10000);
 }

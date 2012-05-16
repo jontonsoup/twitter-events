@@ -3,9 +3,9 @@ class TweetsController < ApplicationController
   # GET /tweets.json
   def index
     if params[:after]
-    @tweets = Tweet.where(" id > ? and first_pass is true", params[:after].to_i)
+    @tweets = Tweet.where(" id > ? and first_pass is true", params[:after].to_i).reverse!
   else
-    @tweets = Tweet.all
+    @tweets = Tweet.all.reverse!
   end
   respond_to do |format|
       format.html # index.html.erb
