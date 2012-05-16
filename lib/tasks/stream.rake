@@ -12,12 +12,12 @@ task :stream => :environment do
       :path    => '/1/statuses/filter.json',
       :auth    => 'nutevents:northwestern',
       :method  => 'POST',
-      :content => "track=OKC,lakers,laker,thunder,kobe,bynum,durant,perkins,gasol,ibaka,Chesapeake%20Energy%20Arena"
+      :content => "track=beautiful"
       )
 
     stream.each_item do |item|
       #$stdout.print "#{item}\n,"
-      $stdout.flush
+      #$stdout.flush
       parsed_json = ActiveSupport::JSON.decode(item)
 
       # This is for saving to the rails database
@@ -58,7 +58,6 @@ task :stream => :environment do
         })
 rescue
 end
-puts "\n"
 
 
 #parse instagram and strip bad data from tweets

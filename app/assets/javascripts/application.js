@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+
+
+$(function () {
+    setTimeout(updatetweets, 10000);
+});
+
+function updatetweets() {
+    var after = $('#tweets tr:last').attr('data-time');
+    $.getScript('/tweets.js?after=' + after);
+    setTimeout(updatetweets, 10000);
+}

@@ -2,11 +2,15 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
+    if params[:after]
+    @tweets = Tweet.where(" id > ? and first_pass is true", params[:after].to_i)
+  else
     @tweets = Tweet.all
-
-    respond_to do |format|
+  end
+  respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tweets }
+      format.js
     end
   end
 

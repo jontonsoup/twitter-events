@@ -24,15 +24,14 @@
       <div class="hero-unit">
         <h1>Tweets</h1>
         <div class="container">
-          <table class="table-striped table-bordered">
-
-
+          <table id="tweets" class="table-striped table-bordered">
             <% @tweets.each do |tweet| %>
             <% if tweet.first_pass %>
-            <tr>
+            <tr class="tweet" data-time="<%= tweet.id %>">
               <td><%= tweet.text %></td>
               <td>
                 <div class="thumbnail span4">
+
                   <img src="<%= tweet.image %>">
                 </div>
               </td>
@@ -40,13 +39,6 @@
             <% end %>
             <% end %>
 
-            <% @tweets.each do |tweet| %>
-            <% if tweet.second_pass %>
-            <tr>
-              <td><%= tweet.text %></td>
-            </tr>
-            <% end %>
-            <% end %>
           </table>
         </div>
 
