@@ -13,6 +13,8 @@ gem 'instagram',  :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
 gem 'therubyracer'
 gem 'nokogiri'
 gem 'sinatra'
+gem 'ym4r'
+gem 'rdio'
 
 
 # Gems used only for assets and not required

@@ -100,6 +100,7 @@ GEM
     multi_json (1.0.4)
     multipart-post (1.1.5)
     nokogiri (1.5.2)
+    oauth (0.4.6)
     pg (0.13.2)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -127,6 +128,8 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2.2)
+    rdio (0.0.99)
+      oauth (>= 0.3.0)
     rdoc (3.12)
       json (~> 1.4)
     ruby-debug19 (0.11.6)
@@ -172,6 +175,7 @@ GEM
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    ym4r (0.6.1)
 
 PLATFORMS
   ruby
@@ -184,6 +188,7 @@ DEPENDENCIES
   nokogiri
   pg
   rails (= 3.2.3)
+  rdio
   ruby-debug-base19!
   ruby-debug19
   sass-rails (~> 3.2.3)
@@ -193,3 +198,4 @@ DEPENDENCIES
   twitter-bootstrap-rails
   twitter-stream
   uglifier (>= 1.0.3)
+  ym4r

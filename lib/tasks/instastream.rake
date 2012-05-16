@@ -12,7 +12,14 @@ task :instastream => :environment do
 #pulls down instagram data from location nubmer 2082352 (madison square garden) into JSON ... 
 #still need to parse it... 
 
-uri = URI.parse("https://api.instagram.com/v1/locations/2082352/media/recent?access_token=3970109.5eb487f.379b03c4a5254d6f80a49fc42f18db37")
+#the Ocation field is where the stream gets pulled from, we might want to use a search instead of a 
+#location tag or a combination of both
+
+minDate = 1336798800
+ocation = "https://api.instagram.com/v1/locations/2082352/media/recent?access_token=3970109.5eb487f.379b03c4a5254d6f80a49fc42f18db37"
+#tweets.getIGData(igLocURI)
+
+uri = URI.parse(ocation)
    http = Net::HTTP.new(uri.host, uri.port)
    http.use_ssl = true
    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -20,20 +27,26 @@ uri = URI.parse("https://api.instagram.com/v1/locations/2082352/media/recent?acc
 
    json_output = http.request(request)
    puts json_output
-   IGData = JSON.parse(json_output.body)
+   igData = JSON.parse(json_output.body)
    
    #take the instagram data and push it into our "tweet " structure
    #set first_pass to true to indicate that it has a photo
-   IGData["data"].each do |num|
-   		puts num["location"]["name"]
-    	puts num["filter"]
-    	Tweet.create({
-          :text => num["caption"]["text"],
-          :image => num["images"]["standard_resolution"]["url"],
-          :first_pass => true
-      	})
-    end
 
+   igData["data"].each do |num|
+      puts num["location"]["name"]
+      puts num["filter"]
+      puts num
+      if num["created_time"].to_i > minDate
+        Tweet.create({
+              :text => num["caption"]["text"],
+              :image => num["images"]["standard_resolution"]["url"],
+              :first_pass => true
+            })
+      elsif num["created_time"].to_i < minDate
+        puts "END"
+      end
+      #getIGData(igData["pagination"]["next_url"])
+    end
 
  #puts Instagram.user_recent_media(user.id);
 end
