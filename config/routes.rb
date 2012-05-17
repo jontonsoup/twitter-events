@@ -1,4 +1,9 @@
 TwitterEvents::Application.routes.draw do
+
+  match '/tweets/all' => 'tweets#all'
+
+  match '/tweets/second' => 'tweets#second_pass'
+
   resources :events
 
   resources :songs
@@ -10,6 +15,9 @@ TwitterEvents::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => "tweets#index"
+
+
+
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
