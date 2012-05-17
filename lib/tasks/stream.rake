@@ -10,9 +10,9 @@ task :stream => :environment do
   EventMachine::run {
     stream = Twitter::JSONStream.connect(
       :path    => '/1/statuses/filter.json',
-      :auth    => 'nutevents:northwestern',
+      :auth    => 'nutevents1:northwestern',
       :method  => 'POST',
-      :content => "track=beautiful"
+      :content => "track=concert"
       )
 
     stream.each_item do |item|
@@ -31,30 +31,29 @@ task :stream => :environment do
           :text => parsed_json["text"],
           :favorited => parsed_json["favorited"],
           :in_reply_to_user_id_str => parsed_json["in_reply_to_user_id_str"],
-        #:geo => "null",an
-        :in_reply_to_screen_name => parsed_json["in_reply_to_screen_name"],
-        :in_reply_to_status_id => parsed_json["in_reply_to_status_id"],
-        :in_reply_to_user_id => parsed_json["in_reply_to_user_id"],
-        :source => parsed_json["source"],
-        :retweet_count => parsed_json["retweet_count"],
-        :truncated => parsed_json["truncated"],
-        #:id_str => parsed_json["id_str"],
-        #:hashtags => parsed_json["entities"]["hashtags"][1],
-        :retweeted => parsed_json["retweeted"],
-        :created_at => parsed_json["created_at"],
-        #:tweet_id => parsed_json["id"],
-        #:user_mentions => parsed_json["user_mentions"],
-
-        #:geo_long => parsed_json["geo_long"],
-        #:geo_lat => parsed_json["geo_lat"],
-        :statuses_count => parsed_json["user"]["statuses_count"],
-        :country => parsed_json["user"]["location"],
-        #not real? :possibly_sensitive => parsed_json["possibly_sensitive"],
-        :expanded_url => expanded,
-        :verified => parsed_json["user"]["verified"],
-        :friends_count => parsed_json["user"]["friends_count"],
-        :screenname => parsed_json["screenname"]
-        # :user_home_location => parsed_json["user_home_location"]
+          #:geo => "null",an
+          :in_reply_to_screen_name => parsed_json["in_reply_to_screen_name"],
+          :in_reply_to_status_id => parsed_json["in_reply_to_status_id"],
+          :in_reply_to_user_id => parsed_json["in_reply_to_user_id"],
+          :source => parsed_json["source"],
+          :retweet_count => parsed_json["retweet_count"],
+          :truncated => parsed_json["truncated"],
+          #:id_str => parsed_json["id_str"],
+          #:hashtags => parsed_json["entities"]["hashtags"][1],
+          :retweeted => parsed_json["retweeted"],
+          :created_at => parsed_json["created_at"],
+          #:tweet_id => parsed_json["id"],
+          #:user_mentions => parsed_json["user_mentions"],
+          #:geo_long => parsed_json["geo_long"],
+          #:geo_lat => parsed_json["geo_lat"],
+          :statuses_count => parsed_json["user"]["statuses_count"],
+          :country => parsed_json["user"]["location"],
+          #not real? :possibly_sensitive => parsed_json["possibly_sensitive"],
+          :expanded_url => expanded,
+          :verified => parsed_json["user"]["verified"],
+          :friends_count => parsed_json["user"]["friends_count"],
+          :screenname => parsed_json["screenname"]
+          # :user_home_location => parsed_json["user_home_location"]
         })
 rescue
 end
@@ -66,7 +65,7 @@ tweets.each do |tweet|
   if tweet.source.downcase.include? 'instagram'
     tweet.first_pass = true
     tweet.save
-      #puts tweet.text
+      puts tweet.text
 
       begin
         doc = Nokogiri::HTML(open(tweet.expanded_url))
