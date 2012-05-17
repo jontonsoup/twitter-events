@@ -18,11 +18,11 @@
 
 
 $(function () {
-    setTimeout(updatetweets, 10000);
+    setTimeout(updatetweets, 5000);
 });
 
 function updatetweets() {
     var after = $('#tweets tr:first').attr('data-time');
     $.getScript('/tweets.js?after=' + after);
-    setTimeout(updatetweets, 10000);
+    setTimeout(updatetweets, 5000);
 }

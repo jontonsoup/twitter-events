@@ -1,4 +1,8 @@
 TwitterEvents::Application.routes.draw do
+  resources :events
+
+  resources :songs
+
   resources :tweets
 
   get "home/index"

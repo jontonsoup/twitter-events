@@ -36,6 +36,7 @@ class CreateTweets < ActiveRecord::Migration
       t.boolean :second_pass
       t.boolean :third_pass
       t.string :image
+      t.integer :event_id
       t.timestamps
 end
 end

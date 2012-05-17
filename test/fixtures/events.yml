@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  lat: 1.5
+  long: 1.5
+  location: MyString
+  artist: MyString
+  opener: MyString
+  number_of_people: 1
+  sold_out: false
+
+two:
+  name: MyString
+  lat: 1.5
+  long: 1.5
+  location: MyString
+  artist: MyString
+  opener: MyString
+  number_of_people: 1
+  sold_out: false
