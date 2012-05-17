@@ -6,15 +6,56 @@ require 'ruby-debug'
 lib_path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift lib_path unless $LOAD_PATH.include?(lib_path)
 
+########################################################
+#
+# => Make sure you fill out all the required fields
+#
+#
+#
+###########################################################
+
+
 task :stream => :environment do
   EventMachine::run {
     stream = Twitter::JSONStream.connect(
       :path    => '/1/statuses/filter.json',
-      :auth    => 'nutevents:northwestern',
-      :method  => 'POST',
-      :content => "track=beautiful"
-      )
 
+      #########################################
+      #     Enter Twitter Account Here
+      :auth    => 'nutevents:northwestern',
+      #
+      #
+      ##########################################
+
+      :method  => 'POST',
+
+      ######################################
+      #   Enter Search Terms Here
+      #
+      :content => "track=Eric%20Church,Target%20Center,Brantley%20Gilbert"
+      #
+      ######################################
+
+      )
+    ###########################################
+    #      Add the even name here
+    event = Event.create(:name => "Eric Church")
+    #
+    #
+    ###########################################
+    puts "\n\n\n" + "You are parsing event: " + event.name + "\n\n\n"
+
+     ###########################################
+    #      Filter terms go here
+    #
+    filter_terms = ["solo", "favorite", "excited", "set", "setlist", "cannot wait", "can't wait", "on my way", "tonight", "I'll be there", "at concert", "off to", "on sale", "sold out", "boyfriend", "girlfriend" , "boy friend", "girl friend", "free", "shirt", "waiting", "line", "opener"]
+    #
+    #
+    ###########################################
+
+
+
+    #get the twiter stream
     stream.each_item do |item|
       #$stdout.print "#{item}\n,"
       #$stdout.flush
@@ -27,7 +68,7 @@ task :stream => :environment do
       rescue
       end
       begin
-        Tweet.create({
+        event.tweets.create({
           :text => parsed_json["text"],
           :favorited => parsed_json["favorited"],
           :in_reply_to_user_id_str => parsed_json["in_reply_to_user_id_str"],
@@ -79,7 +120,12 @@ tweets.each do |tweet|
         rescue
         end
       end
-      tweet.second_pass = true
+
+      #filter the text of the tweets
+
+      if filter_terms.any? { |test_word| tweet.text.include?(test_word) }
+        tweet.second_pass = true
+      end
       tweet.text = tweet.text.gsub(/\s[R][T]\s/, '')
       tweet.text = tweet.text.gsub(/#\s*\w+|\d+/, '')
       tweet.text = tweet.text.gsub(/@\s*\w+|\d+/, '')

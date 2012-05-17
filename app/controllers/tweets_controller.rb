@@ -3,11 +3,31 @@ class TweetsController < ApplicationController
   # GET /tweets.json
   def index
     if params[:after]
-    @tweets = Tweet.where(" id > ? and first_pass is true", params[:after].to_i).reverse!
-  else
-    @tweets = Tweet.all.reverse!
+      @tweets = Tweet.where(" id > ? and first_pass is true", params[:after].to_i).reverse!
+    else
+      @tweets = Tweet.all.reverse!
+    end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tweets }
+      format.js
+    end
   end
-  respond_to do |format|
+
+  def all
+    @tweets = Tweet.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tweets }
+      format.js
+    end
+  end
+
+  def second_pass
+    @tweets = Tweet.where("second_pass is true")
+
+    respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tweets }
       format.js
