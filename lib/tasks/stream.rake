@@ -19,11 +19,6 @@ task :stream => :environment do
   EventMachine::run {
     stream = Twitter::JSONStream.connect(
       :path    => '/1/statuses/filter.json',
-<<<<<<< HEAD
-      :auth    => 'nutevents1:northwestern',
-      :method  => 'POST',
-      :content => "track=concert"
-=======
 
       #########################################
       #     Enter Twitter Account Here
@@ -41,7 +36,6 @@ task :stream => :environment do
       #
       ######################################
 
->>>>>>> f9bd7cad0173c11ef25a4f024273fa697c44d5f8
       )
     ###########################################
     #      Add the even name here
