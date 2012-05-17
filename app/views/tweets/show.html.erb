@@ -1,85 +1,155 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @tweet.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
 
 <p>
-  <b>Text:</b>
+  <strong><%= model_class.human_attribute_name(:text) %>:</strong><br>
   <%= @tweet.text %>
 </p>
-
 <p>
-  <b>Favorited:</b>
+  <strong><%= model_class.human_attribute_name(:favorited) %>:</strong><br>
   <%= @tweet.favorited %>
 </p>
-
 <p>
-  <b>In reply to user id str:</b>
+  <strong><%= model_class.human_attribute_name(:in_reply_to_user_id_str) %>:</strong><br>
   <%= @tweet.in_reply_to_user_id_str %>
 </p>
-
 <p>
-  <b>Geo:</b>
+  <strong><%= model_class.human_attribute_name(:geo) %>:</strong><br>
   <%= @tweet.geo %>
 </p>
-
 <p>
-  <b>In reply to screen name:</b>
+  <strong><%= model_class.human_attribute_name(:in_reply_to_screen_name) %>:</strong><br>
   <%= @tweet.in_reply_to_screen_name %>
 </p>
-
 <p>
-  <b>In reply to status:</b>
+  <strong><%= model_class.human_attribute_name(:in_reply_to_status_id) %>:</strong><br>
   <%= @tweet.in_reply_to_status_id %>
 </p>
-
 <p>
-  <b>In reply to user:</b>
+  <strong><%= model_class.human_attribute_name(:in_reply_to_user_id) %>:</strong><br>
   <%= @tweet.in_reply_to_user_id %>
 </p>
-
 <p>
-  <b>Source:</b>
+  <strong><%= model_class.human_attribute_name(:source) %>:</strong><br>
   <%= @tweet.source %>
 </p>
-
 <p>
-  <b>Retweet count:</b>
+  <strong><%= model_class.human_attribute_name(:retweet_count) %>:</strong><br>
   <%= @tweet.retweet_count %>
 </p>
-
 <p>
-  <b>Truncated:</b>
+  <strong><%= model_class.human_attribute_name(:truncated) %>:</strong><br>
   <%= @tweet.truncated %>
 </p>
-
 <p>
-  <b>Id str:</b>
+  <strong><%= model_class.human_attribute_name(:id_str) %>:</strong><br>
   <%= @tweet.id_str %>
 </p>
-
 <p>
-  <b>Hashtags:</b>
+  <strong><%= model_class.human_attribute_name(:hashtags) %>:</strong><br>
   <%= @tweet.hashtags %>
 </p>
-
 <p>
-  <b>Retweeted:</b>
+  <strong><%= model_class.human_attribute_name(:retweeted) %>:</strong><br>
   <%= @tweet.retweeted %>
 </p>
-
 <p>
-  <b>Created at:</b>
-  <%= @tweet.created_at %>
-</p>
-
-<p>
-  <b>Tweet:</b>
+  <strong><%= model_class.human_attribute_name(:tweet_id) %>:</strong><br>
   <%= @tweet.tweet_id %>
 </p>
-
 <p>
-  <b>User mentions:</b>
+  <strong><%= model_class.human_attribute_name(:user_mentions) %>:</strong><br>
   <%= @tweet.user_mentions %>
 </p>
+<p>
+  <strong><%= model_class.human_attribute_name(:geo_long) %>:</strong><br>
+  <%= @tweet.geo_long %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:geo_lat) %>:</strong><br>
+  <%= @tweet.geo_lat %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:statuses_count) %>:</strong><br>
+  <%= @tweet.statuses_count %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:country) %>:</strong><br>
+  <%= @tweet.country %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:possibly_sensitive) %>:</strong><br>
+  <%= @tweet.possibly_sensitive %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:expanded_url) %>:</strong><br>
+  <%= @tweet.expanded_url %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:verified) %>:</strong><br>
+  <%= @tweet.verified %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:friends_count) %>:</strong><br>
+  <%= @tweet.friends_count %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:screenname) %>:</strong><br>
+  <%= @tweet.screenname %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:user_home_location) %>:</strong><br>
+  <%= @tweet.user_home_location %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:id_n) %>:</strong><br>
+  <%= @tweet.id_n %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:scoreo) %>:</strong><br>
+  <%= @tweet.scoreo %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:scoretw) %>:</strong><br>
+  <%= @tweet.scoretw %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:scoretr) %>:</strong><br>
+  <%= @tweet.scoretr %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:scoref) %>:</strong><br>
+  <%= @tweet.scoref %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:first_pass) %>:</strong><br>
+  <%= @tweet.first_pass %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:second_pass) %>:</strong><br>
+  <%= @tweet.second_pass %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:third_pass) %>:</strong><br>
+  <%= @tweet.third_pass %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:image) %>:</strong><br>
+  <%= @tweet.image %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:event_id) %>:</strong><br>
+  <%= @tweet.event_id %>
+</p>
 
-
-<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
-<%= link_to 'Back', tweets_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              tweets_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_tweet_path(@tweet), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              tweet_path(@tweet),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

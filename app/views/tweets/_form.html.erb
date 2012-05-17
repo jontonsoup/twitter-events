@@ -1,81 +1,218 @@
-<%= form_for(@tweet) do |f| %>
-  <% if @tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
-
-      <ul>
-      <% @tweet.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @tweet, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :text, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :text, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :favorited, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :favorited, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :in_reply_to_user_id_str, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :in_reply_to_user_id_str, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :geo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :geo, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :in_reply_to_screen_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :in_reply_to_screen_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :in_reply_to_status_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :in_reply_to_status_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :in_reply_to_user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :in_reply_to_user_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :source, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :source, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :retweet_count, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :retweet_count, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :truncated, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :truncated, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :id_str, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :id_str, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hashtags, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :hashtags, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :retweeted, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :retweeted, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :tweet_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :tweet_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :user_mentions, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_mentions, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :geo_long, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :geo_long, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :geo_lat, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :geo_lat, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :statuses_count, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :statuses_count, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :country, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :country, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :possibly_sensitive, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :possibly_sensitive, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :expanded_url, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :expanded_url, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :verified, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :verified, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :friends_count, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :friends_count, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :screenname, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :screenname, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :user_home_location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_home_location, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :id_n, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :id_n, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :scoreo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :scoreo, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :scoretw, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :scoretw, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :scoretr, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :scoretr, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :scoref, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :scoref, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :first_pass, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :first_pass, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :second_pass, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :second_pass, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :third_pass, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :third_pass, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :image, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :event_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :event_id, :class => 'number_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :text %><br />
-    <%= f.text_field :text %>
-  </div>
-  <div class="field">
-    <%= f.label :favorited %><br />
-    <%= f.text_field :favorited %>
-  </div>
-  <div class="field">
-    <%= f.label :in_reply_to_user_id_str %><br />
-    <%= f.text_field :in_reply_to_user_id_str %>
-  </div>
-  <div class="field">
-    <%= f.label :geo %><br />
-    <%= f.text_field :geo %>
-  </div>
-  <div class="field">
-    <%= f.label :in_reply_to_screen_name %><br />
-    <%= f.text_field :in_reply_to_screen_name %>
-  </div>
-  <div class="field">
-    <%= f.label :in_reply_to_status_id %><br />
-    <%= f.text_field :in_reply_to_status_id %>
-  </div>
-  <div class="field">
-    <%= f.label :in_reply_to_user_id %><br />
-    <%= f.text_field :in_reply_to_user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :source %><br />
-    <%= f.text_field :source %>
-  </div>
-  <div class="field">
-    <%= f.label :retweet_count %><br />
-    <%= f.number_field :retweet_count %>
-  </div>
-  <div class="field">
-    <%= f.label :truncated %><br />
-    <%= f.text_field :truncated %>
-  </div>
-  <div class="field">
-    <%= f.label :id_str %><br />
-    <%= f.number_field :id_str %>
-  </div>
-  <div class="field">
-    <%= f.label :hashtags %><br />
-    <%= f.text_field :hashtags %>
-  </div>
-  <div class="field">
-    <%= f.label :retweeted %><br />
-    <%= f.text_field :retweeted %>
-  </div>
-  <div class="field">
-    <%= f.label :created_at %><br />
-    <%= f.text_field :created_at %>
-  </div>
-  <div class="field">
-    <%= f.label :tweet_id %><br />
-    <%= f.number_field :tweet_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_mentions %><br />
-    <%= f.text_field :user_mentions %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tweets_path, :class => 'btn' %>
   </div>
 <% end %>

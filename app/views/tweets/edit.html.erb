@@ -1,6 +1,4 @@
-<h1>Editing tweet</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @tweet %> |
-<%= link_to 'Back', tweets_path %>
+<%- model_class = @tweet.class -%>
+<h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
+                                 :default => "Edit #{model_class.model_name.human}") %></h1>
+<%= render :partial => 'form' %>

@@ -1,45 +1,47 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @event.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
 
 <p>
-  <b>Name:</b>
+  <strong><%= model_class.human_attribute_name(:name) %>:</strong><br>
   <%= @event.name %>
 </p>
-
 <p>
-  <b>Lat:</b>
+  <strong><%= model_class.human_attribute_name(:lat) %>:</strong><br>
   <%= @event.lat %>
 </p>
-
 <p>
-  <b>Long:</b>
+  <strong><%= model_class.human_attribute_name(:long) %>:</strong><br>
   <%= @event.long %>
 </p>
-
 <p>
-  <b>Location:</b>
+  <strong><%= model_class.human_attribute_name(:location) %>:</strong><br>
   <%= @event.location %>
 </p>
-
 <p>
-  <b>Artist:</b>
+  <strong><%= model_class.human_attribute_name(:artist) %>:</strong><br>
   <%= @event.artist %>
 </p>
-
 <p>
-  <b>Opener:</b>
+  <strong><%= model_class.human_attribute_name(:opener) %>:</strong><br>
   <%= @event.opener %>
 </p>
-
 <p>
-  <b>Number of people:</b>
+  <strong><%= model_class.human_attribute_name(:number_of_people) %>:</strong><br>
   <%= @event.number_of_people %>
 </p>
-
 <p>
-  <b>Sold out:</b>
+  <strong><%= model_class.human_attribute_name(:sold_out) %>:</strong><br>
   <%= @event.sold_out %>
 </p>
 
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              events_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_event_path(@event), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              event_path(@event),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>
