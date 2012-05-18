@@ -37,6 +37,12 @@
     <tr class="tweet" data-time="<%= tweet.id %>">
       <td><h3><%= tweet.text %></h3></td>
     </tr>
+        <td>
+                <div class="thumbnail span4">
+
+                  <img src="<%= tweet.image %>">
+                </div>
+              </td>
     <% end %>
     <% end %>
   </table>

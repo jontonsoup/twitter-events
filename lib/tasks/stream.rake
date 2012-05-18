@@ -39,7 +39,7 @@ task :stream => :environment do
       )
     ###########################################
     #      Add the even name here
-    event = Event.create(:name => "Eric Church")
+    event = Event.find_or_create_by_name("Eric Church")
     #
     #
     ###########################################
