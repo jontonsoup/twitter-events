@@ -7,7 +7,7 @@
   <table class="table-striped table-bordered ">
     <% @tweetsall.each do |tweet| %>
     <tr class="tweet" data-time="<%= tweet.id %>">
-      <td><h3><%= tweet.text %></h3></td>
+      <td><h3><%= tweet.text.html_safe %></h3></td>
     </tr>
     <% end %>
 
@@ -21,7 +21,7 @@
     <% @tweetsall.each do |tweet| %>
     <% if tweet.second_pass %>
     <tr class="tweet" data-time="<%= tweet.id %>">
-      <td><h3><%= tweet.text %></h3></td>
+      <td><h3><%= tweet.text.html_safe %></h3></td>
     </tr>
     <% end %>
     <% end %>
@@ -35,7 +35,7 @@
     <% @tweetsall.each do |tweet| %>
     <% if tweet.first_pass %>
     <tr class="tweet" data-time="<%= tweet.id %>">
-      <td><h3><%= tweet.text %></h3></td>
+      <td><h3><%= tweet.text.html_safe %></h3></td>
     </tr>
         <td>
                 <div class="thumbnail span4">

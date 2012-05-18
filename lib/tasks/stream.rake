@@ -48,8 +48,13 @@ task :stream => :environment do
      ###########################################
     #      Filter terms go here
     #
-    filter_terms = ["solo", "favorite", "excited", "set", "setlist", "cannot wait", "can't wait", "on my way", "tonight", "I'll be there", "at concert", "off to", "on sale", "sold out", "boyfriend", "girlfriend" , "boy friend", "girl friend", "free", "shirt", "waiting", "line", "opener", "friend", "backstage", "hoodie", "t-shirt", "food", "snacks", "guitar", "solo", "drums", "song", "hit", "set", "drunk"]
+    filter_terms = ["solo", "favorite", "excited", "set", "setlist", "cannot wait", "can't wait", "on my way", "tonight", "I'll be there", "at concert", "off to", "on sale", "sold out", "boyfriend", "girlfriend" , "boy friend", "girl friend", "free", "shirt", "waiting", "line", "opener", "friend", "backstage", "hoodie", "t-shirt", "food", "snacks", "guitar", "solo", "drums", "song", "hit", "set", "drunk", "dedicated"]
     #
+    #
+    # => Negative Filter words go here
+    #
+    #
+      negative_filter_terms = ["pandora","last.fm","rdio", "spotify", "listening", "RT", "jealous", "wishing", "not going", "itunes", "wish", "not fair", "not going to be there", "soundcloud", "tomorrow", "yesterday", "radio"]
     #
     ###########################################
 
@@ -125,7 +130,10 @@ tweets.each do |tweet|
       if filter_terms.any? { |test_word| tweet.text.include?(test_word) }
         tweet.second_pass = true
       end
-      tweet.text = tweet.text.gsub(/\s[R][T]\s/, '')
+      if negative_filter_terms.any? { |test_word| tweet.text.include?(test_word) }
+        tweet.second_pass = false
+      end
+
       tweet.text = tweet.text.gsub(/#\s*\w+|\d+/, '')
       tweet.text = tweet.text.gsub(/@\s*\w+|\d+/, '')
       tweet.text = tweet.text.gsub(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/, '')

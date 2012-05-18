@@ -30,7 +30,7 @@
           <table class="table-striped table-bordered span11">
             <% @tweets.each do |tweet| %>
             <tr class="tweet" data-time="<%= tweet.id %>">
-              <td><h3><%= tweet.text %></h3></td>
+              <td><h3><%= tweet.text.html_safe %></h3></td>
             </tr>
             <% end %>
 
