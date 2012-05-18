@@ -48,7 +48,7 @@ task :stream => :environment do
      ###########################################
     #      Filter terms go here
     #
-    filter_terms = ["solo", "favorite", "excited", "set", "setlist", "cannot wait", "can't wait", "on my way", "tonight", "I'll be there", "at concert", "off to", "on sale", "sold out", "boyfriend", "girlfriend" , "boy friend", "girl friend", "free", "shirt", "waiting", "line", "opener"]
+    filter_terms = ["solo", "favorite", "excited", "set", "setlist", "cannot wait", "can't wait", "on my way", "tonight", "I'll be there", "at concert", "off to", "on sale", "sold out", "boyfriend", "girlfriend" , "boy friend", "girl friend", "free", "shirt", "waiting", "line", "opener", "friend", "backstage", "hoodie", "t-shirt", "food", "snacks", "guitar", "solo", "drums", "song", "hit", "set", "drunk"]
     #
     #
     ###########################################
