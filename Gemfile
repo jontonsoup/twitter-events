@@ -16,7 +16,6 @@ gem 'sinatra'
 gem 'ym4r'
 gem 'rdio'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

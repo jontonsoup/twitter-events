@@ -5,47 +5,55 @@
 <div>
   <h1>ALL</h1>
   <table class="table-striped table-bordered ">
+    <% i = 0 %>
     <% @tweetsall.each do |tweet| %>
     <tr class="tweet" data-time="<%= tweet.id %>">
       <td><h3><%= tweet.text.html_safe %></h3></td>
     </tr>
+    <% i = i + 1 %>
     <% end %>
-
   </table>
+  <%= "Count: " + i.to_s %>
 </div>
 <br>
 <br>
 <div>
-  <h1>Second</h1>
+  <h1>Filtered</h1>
   <table class="table-striped table-bordered">
+    <% i = 0 %>
     <% @tweetsall.each do |tweet| %>
     <% if tweet.second_pass %>
     <tr class="tweet" data-time="<%= tweet.id %>">
       <td><h3><%= tweet.text.html_safe %></h3></td>
     </tr>
+    <% i = i + 1 %>
     <% end %>
     <% end %>
   </table>
+  <%= "Count: " + i.to_s  %>
 </div>
 <br>
 <br>
 <div>
   <h1>Instagam</h1>
   <table class="table-striped table-bordered ">
+    <% i = 0 %>
     <% @tweetsall.each do |tweet| %>
     <% if tweet.first_pass %>
     <tr class="tweet" data-time="<%= tweet.id %>">
       <td><h3><%= tweet.text.html_safe %></h3></td>
     </tr>
-        <td>
-                <div class="thumbnail span4">
+    <td>
+      <div class="thumbnail span4">
 
-                  <img src="<%= tweet.image %>">
-                </div>
-              </td>
+        <img src="<%= tweet.image %>">
+      </div>
+    </td>
+    <% i = i + 1 %>
     <% end %>
     <% end %>
   </table>
+  <%= "Count: " + i.to_s  %>
 </div>
 <br>
 <p>
