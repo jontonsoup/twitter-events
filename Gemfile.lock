@@ -99,7 +99,6 @@ GEM
     mime-types (1.18)
     multi_json (1.0.4)
     multipart-post (1.1.5)
-    newrelic_rpm (3.3.4.1)
     nokogiri (1.5.2)
     oauth (0.4.6)
     pg (0.13.2)
@@ -186,7 +185,6 @@ DEPENDENCIES
   instagram!
   jquery-rails
   linecache19!
-  newrelic_rpm
   nokogiri
   pg
   rails (= 3.2.3)
