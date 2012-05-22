@@ -139,8 +139,8 @@ tweets.each do |tweet|
       end
 
 
-      tweet.text = tweet.text.gsub(/#\s*\w+|\d+/, '')
-      tweet.text = tweet.text.gsub(/@\s*\w+|\d+/, '')
+      tweet.text = tweet.text.gsub(/#\S+/, '')
+      tweet.text = tweet.text.gsub(/@\S+/, '')
       tweet.text = tweet.text.gsub(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/, '')
       if tweet.text.split().count < 11
          tweet.second_pass = false

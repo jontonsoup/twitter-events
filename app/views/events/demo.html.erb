@@ -19,7 +19,20 @@
   </div>
   <div class="hero-unit">
     <h1><%= @event.name %></h1>
+    <p><%= @event.lat %>, <%= @event.long %> </p>
+    <p><%= @event.location %> </p>
     <br>
+
+     <div class="span2" >
+      <table class="table-striped table-bordered ">
+        <% @songs.each do |song| %>
+        <tr class="song" >
+          <td><h7><%= song.name.html_safe %></h7></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+       
     <div >
       <table class="table-striped table-bordered span5">
         <% @tweets.each do |tweet| %>

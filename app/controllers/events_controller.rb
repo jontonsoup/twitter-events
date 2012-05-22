@@ -42,7 +42,14 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @tweets = Tweet.where("second_pass is true")
     @instagram = Tweet.where("first_pass is true")
-
+    @songs = Song.where("event_id = 1")
+    #@artist = Event.find(params[:artist])
+    #@opener = Event.find(params[:opener])
+    #@soldout = Event.find(params[:sold_out])
+    #@lat = Event.find(params[:lat])
+    #@long = Event.find(params[:long])
+    #@venueName = Event.find(params[:location])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tweets }

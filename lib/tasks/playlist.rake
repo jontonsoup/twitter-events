@@ -15,6 +15,10 @@ task :playlist, [:artist, :date] => :environment do |t, args|
   puts query
   uri = URI(query)
   content = Net::HTTP.get(uri)
+
+  eventName = "M83 May 17"
+  event = Event.find_or_create_by_name(eventName)
+
   #takes two arguments, date and artist (date in DD-MM-YYYY format) and outputs the most current version of the setlist
   parsed_json = ActiveSupport::JSON.decode(content)
   parsed_json.class
@@ -24,6 +28,9 @@ task :playlist, [:artist, :date] => :environment do |t, args|
       if index == parsed_json['setlists']['setlist'].size - 1
         num['sets']['set']['song'].each do |num2|
           puts num2['@name']
+          event.songs.create({
+          :name => num2['@name']
+          })
         end
       end
     end
@@ -32,6 +39,9 @@ task :playlist, [:artist, :date] => :environment do |t, args|
     parsed_json['setlists']['setlist']['sets']['set'].each do |num2|
       num2['song'].each do |num3|
         puts num3['@name']
+        event.songs.create({
+          :name => num3['@name']      
+          })
       end
     end
   end

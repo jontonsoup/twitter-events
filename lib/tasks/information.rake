@@ -13,6 +13,8 @@ task :information, [:artist, :date] => :environment do |t, args|
   date = A[2].to_s + "-" + A[1].to_s  + "-" + A[0].to_s 
   puts artist
   puts date
+
+
   #first step is to locate the artist ID
   query = 'http://api.songkick.com/api/3.0/search/artists.json?query=' + artist + '&apikey=9MGhAIR087t4paHA'
   puts query
@@ -22,6 +24,11 @@ task :information, [:artist, :date] => :environment do |t, args|
   parsed_json = ActiveSupport::JSON.decode(content)
   id = parsed_json["resultsPage"]["results"]["artist"][0]["id"]
   puts id
+
+
+  #open the event for writing
+  event = Event.find_or_create_by_name("M83 May 17")
+
 
   #next step is to use the artist id to loop up all events and locate the one one the date you;re looking for
   pass = false
@@ -46,22 +53,22 @@ task :information, [:artist, :date] => :environment do |t, args|
   end
 
   #last step is to take the event id and pull the relavent information
-  eventQuery = 'http://api.songkick.com/api/3.0/events/' + concertID.to_s + '.json&apikey=9MGhAIR087t4paHA'
+  eventQuery = 'http://api.songkick.com/api/3.0/events/' + concertID.to_s + '.json?apikey=9MGhAIR087t4paHA'
   puts eventQuery
   conc3 = URI(eventQuery) 
   content3 = Net::HTTP.get(conc3)
   parsed_json3 = ActiveSupport::JSON.decode(content3)
-  lng = parsed_json3["resultsPage"]["results"]["event"]["location"]["lng"]
-  lat = parsed_json3["resultsPage"]["results"]["event"]["location"]["lat"]
+  puts parsed_json3
+  event.long = parsed_json3["resultsPage"]["results"]["event"]["location"]["lng"]
+  event.lat = parsed_json3["resultsPage"]["results"]["event"]["location"]["lat"]
   capacity = parsed_json3["resultsPage"]["results"]["event"]["venue"]["capacity"]
-  eInfo = parsed_json3["resultsPage"]["results"]["event"]["displayName"]
+  event.artist = artist
+  event.location = parsed_json3["resultsPage"]["results"]["event"]["venue"]["displayName"]
   date = parsed_json3["resultsPage"]["results"]["event"]["start"]["date"]
   time = parsed_json3["resultsPage"]["results"]["event"]["start"]["time"]
-  puts lng #
-  puts lat 
-  puts capacity 
-  puts eInfo 
+  puts capacity  
   puts date 
   puts time   
+  event.save
 
 end
