@@ -45,25 +45,29 @@
        
     <div class="span6">
       <table class="table-striped table-bordered ">
-        <% @tweets.each do |tweet| %>
+        <% @tweetsall.each do |tweet| %>
+        <% if tweet.second_pass == true %>
         <tr class="tweet" >
           <td><h7><%= tweet.text.html_safe %></h7></td>
         </tr>
+        <% end %>
         <% end %>
       </table>
     </div>
 
     <div class="span1" >
       <table class="table-striped table-bordered ">
-        <% @instagram.each do |photo| %>
+        <% @tweetsall.each do |tweet| %>
+        <% if tweet.first_pass == true %>
         <tr class="tweet" >
           <td>
             <div class="thumbnail span3">
 
-              <img src="<%= photo.image %>">
+              <img src="<%= tweet.image %>">
             </div>
           </td>
         </tr>
+        <% end %>
         <% end %>
       </table>
     </div>

@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'json'
 require 'net/http'
+require 'uri'
 lib_path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift lib_path unless $LOAD_PATH.include?(lib_path)
 
@@ -13,10 +14,11 @@ task :information, [:artist, :date] => :environment do |t, args|
   date = A[2].to_s + "-" + A[1].to_s  + "-" + A[0].to_s 
   puts artist
   puts date
+  artist2 = URI.escape(artist)
 
 
   #first step is to locate the artist ID
-  query = 'http://api.songkick.com/api/3.0/search/artists.json?query=' + artist + '&apikey=9MGhAIR087t4paHA'
+  query = 'http://api.songkick.com/api/3.0/search/artists.json?query=' + artist2 + '&apikey=9MGhAIR087t4paHA'
   puts query
   conc = URI(query) 
   content = Net::HTTP.get(conc)
@@ -27,7 +29,7 @@ task :information, [:artist, :date] => :environment do |t, args|
 
 
   #open the event for writing
-  event = Event.find_or_create_by_name("M83 5/20")
+  event = Event.find_or_create_by_name("The Beach Boys 5/22")
 
 
   #next step is to use the artist id to loop up all events and locate the one one the date you;re looking for

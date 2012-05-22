@@ -40,9 +40,9 @@ class EventsController < ApplicationController
 
   def demo
     @event = Event.find(params[:id])
-    @tweets = Tweet.where("second_pass is true")
-    @instagram = Tweet.where("first_pass is true")
-    @songs = Song.where("event_id = 1")
+    @tweetsall = @event.tweets.all
+    #@instagram = Tweet.where("first_pass is true")
+    @songs = @event.songs.all
     #@artist = Event.find(params[:artist])
     #@opener = Event.find(params[:opener])
     #@soldout = Event.find(params[:sold_out])

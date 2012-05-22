@@ -1,14 +1,18 @@
 <%- model_class = @event.class -%>
 <h1><%= @event.name %></h1>
+<br>
+<br>
+<hr>
 
 
 <div>
   <h1>ALL</h1>
+  <br>
   <table class="table-striped table-bordered ">
     <% i = 0 %>
     <% @tweetsall.each do |tweet| %>
     <tr class="tweet" data-time="<%= tweet.id %>">
-      <td><h3><%= tweet.text.html_safe %></h3></td>
+      <td><h6><%= tweet.text.html_safe %></h6></td>
     </tr>
     <% i = i + 1 %>
     <% end %>
@@ -19,12 +23,13 @@
 <br>
 <div>
   <h1>Filtered</h1>
+  <br>
   <table class="table-striped table-bordered">
     <% i = 0 %>
     <% @tweetsall.each do |tweet| %>
     <% if tweet.second_pass %>
     <tr class="tweet" data-time="<%= tweet.id %>">
-      <td><h3><%= tweet.text.html_safe %></h3></td>
+      <td><h5><%= tweet.text.html_safe %></h5></td>
     </tr>
     <% i = i + 1 %>
     <% end %>
@@ -36,12 +41,13 @@
 <br>
 <div>
   <h1>Instagam</h1>
+  <br>
   <table class="table-striped table-bordered ">
     <% i = 0 %>
     <% @tweetsall.each do |tweet| %>
     <% if tweet.first_pass %>
     <tr class="tweet" data-time="<%= tweet.id %>">
-      <td><h3><%= tweet.text.html_safe %></h3></td>
+      <td><6><%= tweet.text.html_safe %></h6></td>
     </tr>
     <td>
       <div class="thumbnail span4">
