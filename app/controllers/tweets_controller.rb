@@ -24,6 +24,18 @@ class TweetsController < ApplicationController
     end
   end
 
+  def demo
+    @tweets = Tweet.where("second_pass is true")
+    @instagram = Tweet.where("first_pass is true")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tweets }
+      format.js
+    end
+
+  end
+
   def second_pass
     @tweets = Tweet.where("second_pass is true")
 

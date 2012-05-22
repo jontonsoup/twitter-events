@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Twitter Events</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <!-- <li class="active"><a href="#">Home</a></li> -->
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="hero-unit">
+    <h1><%= @event.name %></h1>
+    <br>
+    <div >
+      <table class="table-striped table-bordered span5">
+        <% @tweets.each do |tweet| %>
+        <tr class="tweet" >
+          <td><h7><%= tweet.text.html_safe %></h7></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="offset2" >
+      <table class="table-striped table-bordered ">
+        <% @instagram.each do |photo| %>
+        <tr class="tweet" >
+          <td>
+            <div class="thumbnail span4">
+
+              <img src="<%= photo.image %>">
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <hr>
+
+  <footer>
+    <p>&copy; Twitter Events</p>
+  </footer>
+</div>

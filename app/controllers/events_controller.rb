@@ -38,6 +38,19 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def demo
+    @event = Event.find(params[:id])
+    @tweets = Tweet.where("second_pass is true")
+    @instagram = Tweet.where("first_pass is true")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tweets }
+      format.js
+    end
+
+  end
+
   # POST /events
   # POST /events.json
   def create
