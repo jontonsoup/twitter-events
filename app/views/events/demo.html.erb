@@ -18,13 +18,13 @@
     </div><!--/.navbar navbar-inner -->
   </div><!--/.navbar navbar-fixed-top -->
   <div class="row">
-    <div class= "span6">
+    <div class= "span5 offset1">
       <br>
       <h1><%= @event.name %></h1>
       <br>
       <h4> At the <%= @event.location %> </h4>
     </div>
-    <div class= "span6">
+    <div class= "span4">
       <img src="http://maps.googleapis.com/maps/api/staticmap?&size=500x150&sensor=false&zoom=11&maptype=terrain&markers=color:blue%7C<%= @event.lat %>,<%= @event.long %>" alt="You were here." />
     </div>
   </div>
@@ -43,9 +43,9 @@
       </table>
     </div>
        
-    <div class="span5">
+    <div class="span6">
       <table class="table-striped table-bordered ">
-        <% @event.tweets.each do |tweet| %>
+        <% @tweets.each do |tweet| %>
         <tr class="tweet" >
           <td><h7><%= tweet.text.html_safe %></h7></td>
         </tr>
@@ -53,12 +53,12 @@
       </table>
     </div>
 
-    <div class="span2" >
+    <div class="span1" >
       <table class="table-striped table-bordered ">
         <% @instagram.each do |photo| %>
         <tr class="tweet" >
           <td>
-            <div class="thumbnail span4">
+            <div class="thumbnail span3">
 
               <img src="<%= photo.image %>">
             </div>
@@ -71,6 +71,6 @@
   <hr>
 
   <footer>
-    <p><h3> Show's over; go home. </h3></p>
+    <p><h3> Show's over. Go home. </h3></p>
   </footer>
 </div>
