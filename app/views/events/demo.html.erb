@@ -7,35 +7,45 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Twitter Events</a>
+        <a class="brand" href="#">JamBot</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <!-- <li class="active"><a href="#">Home</a></li> -->
+            <li class="active"><a class="icon-volume-up" href="#"></a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
-      </div>
+      </div><!--/.container -->
+    </div><!--/.navbar navbar-inner -->
+  </div><!--/.navbar navbar-fixed-top -->
+  <div class="row">
+    <div class= "span6">
+      <br>
+      <h1><%= @event.name %></h1>
+      <br>
+      <h4> At the <%= @event.location %> </h4>
+    </div>
+    <div class= "span6">
+      <img src="http://maps.googleapis.com/maps/api/staticmap?&size=500x150&sensor=false&zoom=11&maptype=terrain&markers=color:blue%7C<%= @event.lat %>,<%= @event.long %>" alt="You were here." />
     </div>
   </div>
-  <div class="hero-unit">
-    <h1><%= @event.name %></h1>
-    <p><%= @event.lat %>, <%= @event.long %> </p>
-    <p><%= @event.location %> </p>
     <br>
-
-     <div class="span2" >
+  <div class="row">
+     <div class="span2 offset1" >
       <table class="table-striped table-bordered ">
-        <% @songs.each do |song| %>
         <tr class="song" >
+          <td><h4> Set List: </h4></td>
+        </tr>
+        <tr class="song" >
+          <% @songs.each do |song| %>
           <td><h7><%= song.name.html_safe %></h7></td>
         </tr>
         <% end %>
       </table>
     </div>
        
-    <div >
-      <table class="table-striped table-bordered span5">
-        <% @tweets.each do |tweet| %>
+    <div class="span5">
+      <table class="table-striped table-bordered ">
+        <% @event.tweets.each do |tweet| %>
         <tr class="tweet" >
           <td><h7><%= tweet.text.html_safe %></h7></td>
         </tr>
@@ -43,7 +53,7 @@
       </table>
     </div>
 
-    <div class="offset2" >
+    <div class="span2" >
       <table class="table-striped table-bordered ">
         <% @instagram.each do |photo| %>
         <tr class="tweet" >
@@ -61,6 +71,6 @@
   <hr>
 
   <footer>
-    <p>&copy; Twitter Events</p>
+    <p><h3> Show's over; go home. </h3></p>
   </footer>
 </div>

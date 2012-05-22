@@ -16,7 +16,7 @@ task :playlist, [:artist, :date] => :environment do |t, args|
   uri = URI(query)
   content = Net::HTTP.get(uri)
 
-  eventName = "M83 May 17"
+  eventName = "M83 5/20"
   event = Event.find_or_create_by_name(eventName)
 
   #takes two arguments, date and artist (date in DD-MM-YYYY format) and outputs the most current version of the setlist
