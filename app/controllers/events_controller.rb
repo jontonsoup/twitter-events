@@ -40,7 +40,7 @@ class EventsController < ApplicationController
 
   def demo
     @event = Event.find(params[:id])
-    @tweetsall = @event.tweets.all
+    @tweetsall = @event.tweets.all.reverse
     #@instagram = Tweet.where("first_pass is true")
     @songs = @event.songs.all
     #@artist = Event.find(params[:artist])

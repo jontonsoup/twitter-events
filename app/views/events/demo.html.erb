@@ -31,7 +31,7 @@
     <br>
   <div class="row">
      <div class="span2 offset1" >
-      <table class="table-striped table-bordered ">
+      <table class="table-striped table-bordered table">
         <tr class="song" >
           <td><h4> Set List: </h4></td>
         </tr>
@@ -44,7 +44,7 @@
     </div>
        
     <div class="span6">
-      <table class="table-striped table-bordered ">
+      <table class="table-striped table">
         <% @tweetsall.each do |tweet| %>
         <% if tweet.second_pass == true %>
         <tr class="tweet" >
@@ -55,8 +55,8 @@
       </table>
     </div>
 
-    <div class="span1" >
-      <table class="table-striped table-bordered ">
+    <div class="" id="instagram">
+      <table class="table-striped table-bordered">
         <% @tweetsall.each do |tweet| %>
         <% if tweet.first_pass == true %>
         <tr class="tweet" >

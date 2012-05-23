@@ -10,13 +10,15 @@ task :playlist, [:artist, :date] => :environment do |t, args|
   date = args[:date]
   puts artist
   puts date
+  artist2 = URI.escape(artist)
   #'http://api.setlist.fm/rest/0.1/setlist/73de4ac1.json'
-  query = 'http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=' + artist + '&date=' + date
+  query = 'http://api.setlist.fm/rest/0.1/search/setlists.json?artistName=' + artist2 + '&date=' + date
   puts query
   uri = URI(query)
   content = Net::HTTP.get(uri)
 
-  eventName = "M83 5/20"
+  eventName = "The Beach Boys 5/22"
+
   event = Event.find_or_create_by_name(eventName)
 
   #takes two arguments, date and artist (date in DD-MM-YYYY format) and outputs the most current version of the setlist
