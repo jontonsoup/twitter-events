@@ -4,6 +4,7 @@ TwitterEvents::Application.routes.draw do
 
   match '/tweets/second' => 'tweets#second_pass'
   match '/events/demo/:id' => 'events#demo'
+   match '/events/pictures/:id' => 'events#pictures'
 
   resources :events
 

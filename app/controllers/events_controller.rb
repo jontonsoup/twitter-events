@@ -49,7 +49,28 @@ class EventsController < ApplicationController
     #@lat = Event.find(params[:lat])
     #@long = Event.find(params[:long])
     #@venueName = Event.find(params[:location])
-    
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tweets }
+      format.js
+    end
+
+  end
+
+
+    def pictures
+    @event = Event.find(params[:id])
+    @tweetsall = @event.tweets.all.reverse
+    #@instagram = Tweet.where("first_pass is true")
+    @songs = @event.songs.all
+    #@artist = Event.find(params[:artist])
+    #@opener = Event.find(params[:opener])
+    #@soldout = Event.find(params[:sold_out])
+    #@lat = Event.find(params[:lat])
+    #@long = Event.find(params[:long])
+    #@venueName = Event.find(params[:location])
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tweets }

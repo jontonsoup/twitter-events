@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">JamBot</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active"><a class="icon-volume-up" href="#"></a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!--/.container -->
+    </div><!--/.navbar navbar-inner -->
+  </div><!--/.navbar navbar-fixed-top -->
+
+  <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery" data-selector="div.gallery-item">
+    <% @tweetsall.each do |tweet| %>
+    <% if tweet.first_pass == true %>
+    <div class="gallery-item" data-href="<%= tweet.image %>" title="<%= tweet.text %>"><%= tweet.text %></div>
+    <% end %>
+    <% end %>
+  </div>
+  <hr>
+  <!-- modal-gallery is the modal dialog used for the image gallery -->
+  <div id="modal-gallery" class="modal modal-gallery hide fade">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&times;</a>
+      <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body"><div class="modal-image"></div></div>
+    <div class="modal-footer">
+      <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
+      <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
+      <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
+      <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
+    </div>
+  </div>
+
+  <footer>
+    <p><h3> Show's over. Go home. </h3></p>
+  </footer>
+</div>
