@@ -31,14 +31,14 @@ task :stream => :environment do
       ######################################
       #   Enter Search Terms Here
       #
-      :content => "track=beyonce,concert,obama"
+      :content => "track=foster%20the%20people,The%20Kooks,Kimbra,Rumsey%20Playfield,Mark%20Foster"
       #
       ######################################
 
       )
     ###########################################
     #      Add the even name here
-    event = Event.find_or_create_by_name("beyonce")
+    event = Event.find_or_create_by_name("Foster The People")
     #
     #
     ###########################################
