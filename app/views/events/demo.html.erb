@@ -42,15 +42,20 @@
         <% end %>
       </table>
     </div>
-       
+
     <div class="span6">
       <table class="table-striped table">
         <% @tweetsall.each do |tweet| %>
-        <% if tweet.second_pass == true %>
-        <tr class="tweet" >
-          <td><h7><%= tweet.text.html_safe %></h7></td>
-        </tr>
-        <% end %>
+          <% if tweet.second_pass == true %>
+            <tr class="tweet" >
+              <td><h7><%= tweet.text.html_safe %></h7></td>
+              <td><h7>Tweet shown because:
+                <% tweet.categories.each do |category| %>
+                  <%= category.name %>
+                  </h7></td>
+                  </tr>
+                <% end %>
+         <% end %>
         <% end %>
       </table>
     </div>

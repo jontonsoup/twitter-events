@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517014623) do
+ActiveRecord::Schema.define(:version => 20120529033005) do
+
+  create_table "categories", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "categories_tweets", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "tweet_id"
+  end
 
   create_table "events", :force => true do |t|
     t.string   "name"
