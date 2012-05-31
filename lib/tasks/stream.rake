@@ -48,15 +48,15 @@ task :stream => :environment do
     #      Filter terms go here
     #      These should be lowercase
     #
-    instruments = ["guitar", "drums",  "guitar pick", "beat", "drummer", "drumstick", "pick"]
+    instruments = ["guitar", "drums",  "guitar pick", "drummer", "drumstick", "pick", "bass", "bassist"]
 
-    emotion = ["cry", "crying", "tearing", "tear"]
+    emotion = ["cry", "crying", "tearing", "tear", "never forget"]
 
     onway = ["off to", "here i come", "here we come", "on my way", "line"]
 
-    anticipation = ["cannot wait", "can't wait", "excited", "i'll be there", "anticipation", "waiting"]
+    anticipation = ["cannot wait", "can't wait", "excited", "i'll be there", "anticipation", "waiting", "looking forward", "praying"]
 
-    description = ["tonight", "sold out", "solo", "favorite", "outfit", "exclusive", "musical experience", "experience", "scalped", "perfect", "rockin", "balcony", " front row", "row", "front","encore", "voice", "cowboy", "country", "blues", "jazz", "set", "setlist", "scalped", "backstage", "opener", "at concert", "season", "hit", "set", "fitting","praying","song"]
+    description = [ "sold out", "solo", "favorite", "outfit", "exclusive", "musical experience", "scalped", "rockin", "balcony", "front row", "row", "front","encore", "voice", "cowboy", "set", "setlist", "scalped", "backstage", "opener", "at concert", "set", "fitting", "chills", "dancing", "duet"]
 
     drugs = ["blunt", "smoke", "weed", "stoned", "high", "rolling"]
 
@@ -66,7 +66,9 @@ task :stream => :environment do
 
     lust = ["sexy", "marry", "cute", "addiction", "addicted", "touched", "eyes", "marry"]
 
-    items = ["on sale", "free", "shirt","hoodie", "t-shirt", "food", "snacks", "shirts"]
+    items = ["on sale", "free", "shirt","hoodie", "t-shirt", "food", "snacks", "shirts", "tshirt"]
+
+    after =  ["just saw", "just watched"]
 
     #
     #
@@ -74,7 +76,7 @@ task :stream => :environment do
     #    These should be lowercase
     #
     #
-    negative_filter_terms = ["pandora","last.fm","rdio", "spotify", "listening", "rt", "jealous", "wishing", "not going", "itunes", "wish", "not fair", "not going to be there", "soundcloud", "tomorrow", "yesterday", "radio", "commerical", "dailymotion", "dailymotion", "youtube", "last night", "rifle", "grooveshark", "getglue", "studying", "facebook statuses", "missing", "video", "not going to be there", "not going", "not there", "not gonna be there", "why am i not at", "why aren't i at", "ampz", "should be seeing", "i am not out", "not at", "kill to go see", "kill to see", "hate everyone who is going", "i would do anything to hear", "\":", ":", "i would give just about everything", "i would give just about anything", "workout song", "ipod", "workout", "fuck", "shit", "fucking", "fuckin", "fucker", "fucked", "shat", "shitty", "shitting","exfm","free track","download","tomorrow"]
+    negative_filter_terms = ["pandora","last.fm","rdio", "spotify", "listening", "rt", "jealous", "wishing", "not going", "itunes", "wish", "not fair", "not going to be there", "soundcloud", "tomorrow", "yesterday", "radio", "commerical", "dailymotion", "dailymotion", "youtube", "last night", "rifle", "grooveshark", "getglue", "studying", "facebook statuses", "missing", "video", "not going to be there", "not going", "not there", "not gonna be there", "why am i not at", "why aren't i at", "ampz", "should be seeing", "i am not out", "not at", "kill to go see", "kill to see", "hate everyone who is going", "i would do anything to hear", "\":", ":", "i would give just about everything", "i would give just about anything", "workout song", "ipod", "workout", "fuck", "shit", "fucking", "fuckin", "fucker", "fucked", "shat", "shitty", "shitting","exfm","free track","download","tomorrow", "i couldn't go", "next week", "feat", "listen", "was asking", "imagine", "xoxo", "link", "preview", "la", "el","song", "on", "gusta", "heard", "fave"]
     #
     ###########################################
 
@@ -159,76 +161,74 @@ end
             tweet.categories.create(:name => "Instruments")
           end
           tweet.second_pass = true
-        end
 
-        if emotion.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif emotion.any? { |test_word| tweet.text.downcase.include?(test_word) }
 
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"Emotions")
           end
           tweet.second_pass = true
-        end
 
-        if onway.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif onway.any? { |test_word| tweet.text.downcase.include?(test_word) }
 
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"On Way To Concert")
           end
           tweet.second_pass = true
-        end
 
-        if anticipation.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif anticipation.any? { |test_word| tweet.text.downcase.include?(test_word) }
 
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"Anticipation")
           end
           tweet.second_pass = true
-        end
 
-        if description.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif description.any? { |test_word| tweet.text.downcase.include?(test_word) }
 
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"Description")
           end
           tweet.second_pass = true
-        end
 
-        if drugs.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif drugs.any? { |test_word| tweet.text.downcase.include?(test_word) }
 
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"Drugs")
           end
           tweet.second_pass = true
-        end
 
-        if drinking.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif drinking.any? { |test_word| tweet.text.downcase.include?(test_word) }
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"Drinking")
           end
           tweet.second_pass = true
-        end
 
-        if relationship.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif relationship.any? { |test_word| tweet.text.downcase.include?(test_word) }
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"Relationship")
           end
           tweet.second_pass = true
-        end
 
-        if lust.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif lust.any? { |test_word| tweet.text.downcase.include?(test_word) }
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"Lust")
           end
           tweet.second_pass = true
-        end
 
 
-        if items.any? { |test_word| tweet.text.downcase.include?(test_word) }
+        elsif items.any? { |test_word| tweet.text.downcase.include?(test_word) }
           if tweet.second_pass == false or tweet.second_pass == nil
             tweet.categories.create(:name =>"Items")
           end
           tweet.second_pass = true
+
+        elsif after.any? { |test_word| tweet.text.downcase.include?(test_word) }
+          if tweet.second_pass == false or tweet.second_pass == nil
+            tweet.categories.create(:name =>"After The Concert")
+          end
+          tweet.second_pass = true
         end
+
 
         if negative_filter_terms.any? { |test_word| tweet.text.downcase.include?(test_word) }
           tweet.second_pass = false

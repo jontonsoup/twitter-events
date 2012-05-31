@@ -11,7 +11,7 @@ task :information, [:artist, :date] => :environment do |t, args|
 
   #need to rearrange the date
   A = dateOLD.to_s.split("-")
-  date = A[2].to_s + "-" + A[1].to_s  + "-" + A[0].to_s 
+  date = A[2].to_s + "-" + A[1].to_s  + "-" + A[0].to_s
   puts artist
   puts date
   artist2 = URI.escape(artist)
@@ -20,7 +20,7 @@ task :information, [:artist, :date] => :environment do |t, args|
   #first step is to locate the artist ID
   query = 'http://api.songkick.com/api/3.0/search/artists.json?query=' + artist2 + '&apikey=9MGhAIR087t4paHA'
   puts query
-  conc = URI(query) 
+  conc = URI(query)
   content = Net::HTTP.get(conc)
   #puts content2
   parsed_json = ActiveSupport::JSON.decode(content)
@@ -29,7 +29,7 @@ task :information, [:artist, :date] => :environment do |t, args|
 
 
   #open the event for writing
-  event = Event.find_or_create_by_name("The Beach Boys 5/22")
+  event = Event.find_or_create_by_name("Foster The People")
 
 
   #next step is to use the artist id to loop up all events and locate the one one the date you;re looking for
@@ -39,7 +39,7 @@ task :information, [:artist, :date] => :environment do |t, args|
   while pass == false
     artistQuery = 'http://api.songkick.com/api/3.0/artists/' + id.to_s + '/gigography.json?apikey=9MGhAIR087t4paHA&page=' + page.to_s
     puts artistQuery
-    conc2 = URI(artistQuery) 
+    conc2 = URI(artistQuery)
     content2 = Net::HTTP.get(conc2)
     #puts content2
     parsed_json2 = ActiveSupport::JSON.decode(content2)
@@ -57,7 +57,7 @@ task :information, [:artist, :date] => :environment do |t, args|
   #last step is to take the event id and pull the relavent information
   eventQuery = 'http://api.songkick.com/api/3.0/events/' + concertID.to_s + '.json?apikey=9MGhAIR087t4paHA'
   puts eventQuery
-  conc3 = URI(eventQuery) 
+  conc3 = URI(eventQuery)
   content3 = Net::HTTP.get(conc3)
   parsed_json3 = ActiveSupport::JSON.decode(content3)
   puts parsed_json3
@@ -68,9 +68,9 @@ task :information, [:artist, :date] => :environment do |t, args|
   event.location = parsed_json3["resultsPage"]["results"]["event"]["venue"]["displayName"]
   date = parsed_json3["resultsPage"]["results"]["event"]["start"]["date"]
   time = parsed_json3["resultsPage"]["results"]["event"]["start"]["time"]
-  puts capacity  
-  puts date 
-  puts time   
+  puts capacity
+  puts date
+  puts time
   event.save
 
 end

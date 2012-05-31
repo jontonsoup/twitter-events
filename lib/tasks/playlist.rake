@@ -8,6 +8,7 @@ task :playlist, [:artist, :date] => :environment do |t, args|
   #gets the playlist from setlist.fm and outputs it
   artist = args[:artist]
   date = args[:date]
+
   puts artist
   puts date
   artist2 = URI.escape(artist)
@@ -17,7 +18,7 @@ task :playlist, [:artist, :date] => :environment do |t, args|
   uri = URI(query)
   content = Net::HTTP.get(uri)
 
-  eventName = "The Beach Boys 5/22"
+  eventName = "Foster The People"
 
   event = Event.find_or_create_by_name(eventName)
 
@@ -42,7 +43,7 @@ task :playlist, [:artist, :date] => :environment do |t, args|
       num2['song'].each do |num3|
         puts num3['@name']
         event.songs.create({
-          :name => num3['@name']      
+          :name => num3['@name']
           })
       end
     end
