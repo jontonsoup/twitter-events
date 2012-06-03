@@ -50,11 +50,9 @@
             <tr class="tweet" >
               <td><h7><%= tweet.text.html_safe %></h7></td>
               <td><h7>Tweet shown because:
-                <% tweet.categories.each do |category| %>
-                  <%= category.name %>
+                <%= tweet.categories.first.name %>
                   </h7></td>
                   </tr>
-                <% end %>
          <% end %>
         <% end %>
       </table>

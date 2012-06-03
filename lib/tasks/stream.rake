@@ -31,14 +31,14 @@ task :stream => :environment do
       ######################################
       #   Enter Search Terms Here
       #
-      :content => "track=foster%20the%20people,The%20Kooks,Kimbra,Rumsey%20Playfield,Mark%20Foster"
+      :content => "track=drake,First%20Midwest%20Bank%20Amphitheatre,drake%20Tinley%20Park"
       #
       ######################################
 
       )
     ###########################################
     #      Add the even name here
-    event = Event.find_or_create_by_name("Foster The People")
+    event = Event.find_or_create_by_name("Drake")
     #
     #
     ###########################################
@@ -52,11 +52,11 @@ task :stream => :environment do
 
     emotion = ["cry", "crying", "tearing", "tear", "never forget"]
 
-    onway = ["off to", "here i come", "here we come", "on my way", "line"]
+    onway = ["off to", "here i come", "here we come", "on my way", "line", "going to"]
 
     anticipation = ["cannot wait", "can't wait", "excited", "i'll be there", "anticipation", "waiting", "looking forward", "praying"]
 
-    description = [ "sold out", "solo", "favorite", "outfit", "exclusive", "musical experience", "scalped", "rockin", "balcony", "front row", "row", "front","encore", "voice", "cowboy", "set", "setlist", "scalped", "backstage", "opener", "at concert", "set", "fitting", "chills", "dancing", "duet"]
+    description = ["concert","tonight", "sold out", "solo", "favorite", "outfit", "exclusive", "musical experience", "scalped", "rockin", "balcony", "front row", "row", "front","encore", "voice", "cowboy", "set", "setlist", "scalped", "backstage", "opener", "at concert", "set", "fitting", "chills", "dancing", "duet", "met", "unreal night"]
 
     drugs = ["blunt", "smoke", "weed", "stoned", "high", "rolling"]
 
@@ -76,7 +76,7 @@ task :stream => :environment do
     #    These should be lowercase
     #
     #
-    negative_filter_terms = ["pandora","last.fm","rdio", "spotify", "listening", "rt", "jealous", "wishing", "not going", "itunes", "wish", "not fair", "not going to be there", "soundcloud", "tomorrow", "yesterday", "radio", "commerical", "dailymotion", "dailymotion", "youtube", "last night", "rifle", "grooveshark", "getglue", "studying", "facebook statuses", "missing", "video", "not going to be there", "not going", "not there", "not gonna be there", "why am i not at", "why aren't i at", "ampz", "should be seeing", "i am not out", "not at", "kill to go see", "kill to see", "hate everyone who is going", "i would do anything to hear", "\":", ":", "i would give just about everything", "i would give just about anything", "workout song", "ipod", "workout", "fuck", "shit", "fucking", "fuckin", "fucker", "fucked", "shat", "shitty", "shitting","exfm","free track","download","tomorrow", "i couldn't go", "next week", "feat", "listen", "was asking", "imagine", "xoxo", "link", "preview", "la", "el","song", "on", "gusta", "heard", "fave"]
+    negative_filter_terms = ["pandora","last.fm","rdio", "spotify", "listening", "rt", "jealous", "wishing", "not going", "itunes", "wish", "not fair", "not going to be there", "soundcloud", "tomorrow", "yesterday", "radio", "commerical", "dailymotion", "dailymotion", "youtube", "last night", "rifle", "grooveshark", "getglue", "studying", "facebook statuses", "missing", "video", "not going to be there", "not going", "not there", "not gonna be there", "why am i not at", "why aren't i at", "ampz", "should be seeing", "i am not out", "not at", "kill to go see", "kill to see", "hate everyone who is going", "i would do anything to hear", "\":", ":", "i would give just about everything", "i would give just about anything", "workout song", "ipod", "workout", "fuck", "shit", "fucking", "fuckin", "fucker", "fucked", "shat", "shitty", "shitting","exfm","free track","download","tomorrow", "i couldn't go", "next week", "feat", "listen", "was asking", "imagine", "xoxo", "link", "preview", "la", "el","song", "on", "gusta", "heard", "fave", "lol"]
     #
     ###########################################
 
