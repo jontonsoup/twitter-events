@@ -41,12 +41,24 @@
       </tr>
       <% end %>
     </table>
+    <div id="apiswf"></div>
+    <dl>
+      <dt>track</dt>
+      <dd id="track"></dd>
+      <dt>position</dt>
+      <dd id="position"></dd>
+    </dl>
+    <input id="play_key" value="p909014" type="hidden"><button id="play">Play</button><br>
+    <button id="pause">Pause</button>
+    <button id="next">Next</button>
   </div>
 
   <div class="span6" id="tweet">
     <table class="table-striped table">
       <% @tweetsall.each do |tweet| %>
       <% if tweet.second_pass == true %>
+      <% if not tweet.categories.first.nil? %>
+      <% if tweet.categories.first.name == "Anticipation" %>
       <tr class="tweet" >
         <td><h5><%= tweet.text.html_safe %></h5></td>
         <td><span class="tag">
@@ -57,6 +69,62 @@
      </tr>
      <% end %>
      <% end %>
+     <% end %>
+     <% end %>
+
+
+
+      <% @tweetsall.each do |tweet| %>
+      <% if tweet.second_pass == true %>
+      <% if not tweet.categories.first.nil? %>
+      <% if tweet.categories.first.name == "On Way To Concert" %>
+      <tr class="tweet" >
+        <td><h5><%= tweet.text.html_safe %></h5></td>
+        <td><span class="tag">
+         <% if not tweet.categories.first.nil? %>
+         <%= tweet.categories.first.name %>
+         <% end %>
+       </h9></span>
+     </tr>
+     <% end %>
+     <% end %>
+     <% end %>
+     <% end %>
+
+      <% @tweetsall.each do |tweet| %>
+      <% if tweet.second_pass == true %>
+      <tr class="tweet" >
+        <td><h5><%= tweet.text.html_safe %></h5></td>
+        <td><span class="tag">
+         <% if not tweet.categories.first.nil? %>
+         <% if tweet.categories.first.name != ("Anticipation" || "On Way To Concert" || "After The Concert") %>
+         <%= tweet.categories.first.name %>
+         <% end %>
+         <% end %>
+       </h9></span>
+     </tr>
+     <% end %>
+     <% end %>
+
+
+      <% @tweetsall.each do |tweet| %>
+      <% if tweet.second_pass == true %>
+      <% if not tweet.categories.first.nil? %>
+      <% if tweet.categories.first.name == "After The Concert" %>
+      <tr class="tweet" >
+        <td><h5><%= tweet.text.html_safe %></h5></td>
+        <td><span class="tag">
+         <% if not tweet.categories.first.nil? %>
+         <%= tweet.categories.first.name %>
+         <% end %>
+       </h9></span>
+     </tr>
+     <% end %>
+     <% end %>
+     <% end %>
+     <% end %>
+
+
    </table>
  </div>
 
@@ -77,6 +145,7 @@
 </div>
 </div>
 <hr>
+
 
 <footer>
   <p><h3> Show's over. Go home. </h3></p>
