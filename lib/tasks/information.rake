@@ -29,7 +29,7 @@ task :information, [:artist, :date] => :environment do |t, args|
 
 
   #open the event for writing
-  event = Event.find_or_create_by_name("Foster The People")
+  event = Event.find_or_create_by_name("Drake")
 
 
   #next step is to use the artist id to loop up all events and locate the one one the date you;re looking for

@@ -28,56 +28,57 @@
       <img src="http://maps.googleapis.com/maps/api/staticmap?&size=500x150&sensor=false&zoom=11&maptype=terrain&markers=color:blue%7C<%= @event.lat %>,<%= @event.long %>" alt="You were here." />
     </div>
   </div>
-    <br>
+  <br>
   <div class="row">
-     <div class="span2 offset1" >
-      <table class="table-striped table-bordered table">
-        <tr class="song" >
-          <td><h4> Set List: </h4></td>
-        </tr>
-        <tr class="song" >
-          <% @songs.each do |song| %>
-          <td><h7><%= song.name.html_safe %></h7></td>
-        </tr>
-        <% end %>
-      </table>
-    </div>
-
-    <div class="span6">
-      <table class="table-striped table">
-        <% @tweetsall.each do |tweet| %>
-          <% if tweet.second_pass == true %>
-            <tr class="tweet" >
-              <td><h7><%= tweet.text.html_safe %></h7></td>
-              <td><h7>Tweet shown because:
-                <%= tweet.categories.first.name %>
-                  </h7></td>
-                  </tr>
-         <% end %>
-        <% end %>
-      </table>
-    </div>
-
-    <div class="" id="instagram">
-      <table class="table-striped table-bordered">
-        <% @tweetsall.each do |tweet| %>
-        <% if tweet.first_pass == true %>
-        <tr class="tweet" >
-          <td>
-            <div class="thumbnail span3">
-
-              <img src="<%= tweet.image %>">
-            </div>
-          </td>
-        </tr>
-        <% end %>
-        <% end %>
-      </table>
-    </div>
+   <div class="span2 offset1" >
+    <table class="table-striped table-bordered table">
+      <tr class="song" >
+        <td><h4> Set List: </h4></td>
+      </tr>
+      <tr class="song" >
+        <% @songs.each do |song| %>
+        <td><h7><%= song.name.html_safe %></h7></td>
+      </tr>
+      <% end %>
+    </table>
   </div>
-  <hr>
 
-  <footer>
-    <p><h3> Show's over. Go home. </h3></p>
-  </footer>
+  <div class="span6" id="tweet">
+    <table class="table-striped table">
+      <% @tweetsall.each do |tweet| %>
+      <% if tweet.second_pass == true %>
+      <tr class="tweet" >
+        <td><h7><%= tweet.text.html_safe %></h7></td>
+        <td><h7>Tweet shown because:
+         <% if not tweet.categories.first.nil? %>
+         <%= tweet.categories.first.name %>
+         <% end %>
+       </h7></td>
+     </tr>
+     <% end %>
+     <% end %>
+   </table>
+ </div>
+
+ <div class="" id="instagram">
+  <table class="table-striped table-bordered">
+    <% @tweetsall.each do |tweet| %>
+    <% if tweet.first_pass == true %>
+    <tr class="tweet" >
+      <td>
+        <div class="thumbnail span3">
+          <img src="<%= tweet.image %>">
+        </div>
+      </td>
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
+</div>
+</div>
+<hr>
+
+<footer>
+  <p><h3> Show's over. Go home. </h3></p>
+</footer>
 </div>

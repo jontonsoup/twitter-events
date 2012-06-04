@@ -18,7 +18,7 @@ task :playlist, [:artist, :date] => :environment do |t, args|
   uri = URI(query)
   content = Net::HTTP.get(uri)
 
-  eventName = "Foster The People"
+  eventName = "Drake"
 
   event = Event.find_or_create_by_name(eventName)
 
