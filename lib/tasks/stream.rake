@@ -186,7 +186,7 @@ end
         elsif description.any? { |test_word| tweet.text.downcase.include?(test_word) }
 
           if tweet.second_pass == false or tweet.second_pass == nil
-            tweet.categories.create(:name =>"Description")
+            tweet.categories.create(:name =>"Atmosphere")
           end
           tweet.second_pass = true
 
@@ -234,8 +234,8 @@ end
           tweet.second_pass = false
         end
 
-        tweet.text = tweet.text.gsub(/#\S+/, '')
-        tweet.text = tweet.text.gsub(/@\S+/, '')
+        #tweet.text = tweet.text.gsub(/#\S+/, '')
+        tweet.text = tweet.text.gsub(/@/, '')
         tweet.text = tweet.text.gsub(/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/, '')
         if tweet.text.split().count < 11
           tweet.second_pass = false
