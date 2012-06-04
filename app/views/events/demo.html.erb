@@ -48,12 +48,12 @@
       <% @tweetsall.each do |tweet| %>
       <% if tweet.second_pass == true %>
       <tr class="tweet" >
-        <td><h7><%= tweet.text.html_safe %></h7></td>
-        <td><h7>Tweet shown because:
+        <td><h5><%= tweet.text.html_safe %></h5></td>
+        <td><span class="tag">
          <% if not tweet.categories.first.nil? %>
          <%= tweet.categories.first.name %>
          <% end %>
-       </h7></td>
+       </h9></span>
      </tr>
      <% end %>
      <% end %>

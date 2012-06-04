@@ -47,7 +47,7 @@
     <% @tweetsall.each do |tweet| %>
     <% if tweet.first_pass %>
     <tr class="tweet" data-time="<%= tweet.id %>">
-      <td><6><%= tweet.text.html_safe %></h6></td>
+      <td><h6><%= tweet.text.html_safe %></h6></td>
     </tr>
     <td>
       <div class="thumbnail span4">
