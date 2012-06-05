@@ -21,7 +21,7 @@ task :stream => :environment do
 
       #########################################
       #     Enter Twitter Account Here
-      :auth    => 'nutevents1:northwestern',
+      :auth    => 'nutevents3:northwestern',
       #
       #
       ##########################################
@@ -31,14 +31,14 @@ task :stream => :environment do
       ######################################
       #   Enter Search Terms Here
       #
-      :content => "track=drake,First%20Midwest%20Bank%20Amphitheatre,drake%20Tinley%20Park"
+      :content => "track=lana%20del%20rey,el%20rey%20theater"
       #
       ######################################
 
       )
     ###########################################
     #      Add the even name here
-    event = Event.find_or_create_by_name("Drake")
+    event = Event.find_or_create_by_name("Lana Del Rey 6/4")
     #
     #
     ###########################################
