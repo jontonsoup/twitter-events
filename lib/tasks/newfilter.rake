@@ -5,7 +5,7 @@ require 'ruby-debug'
 
 task :newfilter => :environment do
 
-  event = Event.find_or_create_by_name("M83 May 17")
+  event = Event.find_or_create_by_name("The Beach Boys 5/22")
 
   ###########################################
   #      Filter terms go here
@@ -13,13 +13,13 @@ task :newfilter => :environment do
   #
   instruments = ["guitar", "sax", "saxophone", "drums",  "guitar pick", "drummer", "drumstick", "pick", "bass", "bassist", "lead singer"]
 
-  emotion = ["cry", "crying", "tearing", "tear", "never forget"]
+  emotion = ["cry", "crying", "tearing", "tear", "never forget", "blew me away", "emotional"]
 
-  onway = ["off to", "here i come", "here we come", "on my way", "line", "going to"]
+  onway = ["off to", "here i come", "here we come", "on my way", "line", "going to", "waiting outside"]
 
-  anticipation = ["cannot wait", "ready to watch", "ready to see", "can't wait", "excited", "i'll be there", "anticipation", "waiting", "looking forward", "praying"]
+  anticipation = ["cannot wait", "ready to watch", "ready to see", "can't wait", "excited", "i'll be there", "anticipation", "waiting", "looking forward", "waiting for" "praying"]
 
-  description = ["concert", "anthony gonzales", "tonight", "sold out", "solo", "favorite", "outfit", "exclusive", "musical experience", "scalped", "rockin", "balcony", "front row", "row", "front","encore", "voice", "cowboy", "set", "setlist", "scalped", "backstage", "opener", "at concert", "set", "fitting", "chills", "dancing", "duet", "met", "light show", "laser show", "tour bus", "unreal night"]
+  description = ["concert", "tonight", "sold out", "solo", "favorite", "outfit", "exclusive", "musical experience", "scalped", "rockin", "balcony", "front row", "in the front", "right in front", "row", "front","encore", "voice", "cowboy", "set", "setlist", "covering", "covered", "cover", "scalped", "backstage", "anthony gonzales", "opener", "at concert", "set", "fitting", "chills", "dancing", "duet", "met", "light show", "laser show", "tour bus", "second set", "unreal night"]
 
   drugs = ["blunt", "smoke", "weed", "stoned", "high", "rolling"]
 
@@ -31,7 +31,7 @@ task :newfilter => :environment do
 
   items = ["on sale", "free", "shirt", "hoodie", "t-shirt", "food", "snacks", "shirts", "tshirt"]
 
-  after =  ["just saw", "just watched", "amazing show", "lights out", "coming home", "most amazing" "going home", "was great", "was unreal", "was amazing", "were unreal", "were amamzing", "ride home"]
+  after =  ["just saw", "just watched", "amazing show", "amazing night", "great night", "fantastic show", "lights out", "coming home", "most amazing" "going home", "was great", "was unreal", "was amazing", "were unreal", "were amamzing", "ride home"]
 
   #
   #
@@ -39,7 +39,7 @@ task :newfilter => :environment do
   #    These should be lowercase    ADD MUS HAVE WORDS?????
   #
   #
-  negative_filter_terms = ["pandora","last.fm","rdio", "going to sleep", "free dl", "lock eyes" "spotify", "listening", "rt", "jealous", "wishing", "not going", "itunes", "wish", "not fair", "not going to be there", "soundcloud", "tomorrow", "skrillex", "yesterday", "radio", "commerical", "dailymotion", "dailymotion", "youtube", "last night", "rifle", "grooveshark", "tatts", "getglue", "studying", "facebook statuses", "missing", "video", "not going to be there", "not going", "not there", "not gonna be there", "why am i not at", "why aren't i at", "ampz", "should be seeing", "i am not out", "not at", "kill to go see", "kill to see", "hate everyone who is going", "i would do anything to hear", "\":", ":", "i would give just about everything", "i would give just about anything", "workout song", "ipod", "workout", "fuck", "shit", "fucking", "fuckin", "fucker", "fucked", "shat", "shitty", "shitting","exfm","free track","download","tomorrow", "i couldn't go", "next week", "feat", "listen", "was asking", "imagine", "xoxo", "link", "preview", " la ", " el " , " on ", "gusta", "heard", "fave", "lol", "#10peopleIHaveSeenLive", "#nowplaying" "#10bandsilike"]
+  negative_filter_terms = ["pandora","last.fm","rdio", "going to sleep", "free dl", "lock eyes" "spotify", "listening", "rt", "jealous", "wishing", "setlist.fm", "ex.fm", "turntable.fm", "not going", "itunes", "wish", "not fair", "not going to be there", "soundcloud", "tomorrow", "skrillex", "yesterday", "radio", "commerical", "dailymotion", "dailymotion", "youtube", "last night", "next games", "rifle", "grooveshark", "tatts", "getglue", "studying", "facebook statuses", "missing", "video", "not going to be there", "not going", "not there", "not gonna be there", "why am i not at", "why aren't i at", "ampz", "should be seeing", "i am not out", "not at", "kill to go see", "kill to see", "hate everyone who is going", "i would do anything to hear", "\":", ":", "i would give just about everything", "i would give just about anything", "workout song", "ipod", "workout", "fuck", "shit", "fucking", "fuckin", "fucker", "fucked", "shat", "shitty", "shitting","exfm","free track","download","tomorrow", "i couldn't go", "next week", "feat", "listen", "was asking", "imagine", "xoxo", "link", "preview", " la ", " el " , " on ", "gusta", "heard", "fave", "lol", "#10peopleIHaveSeenLive", "#nowplaying" "#10bandsilike"]
   #
   ##########################################
 
@@ -139,6 +139,11 @@ task :newfilter => :environment do
 
         #filter the text of the tweets
     if tweet.text.split().count < 5
+      tweet.second_pass = false
+    end
+
+    #filter for lists with lots of commas
+    if tweet.text.split(',').count > 6
       tweet.second_pass = false
     end
     tweet.save

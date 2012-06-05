@@ -1,13 +1,18 @@
 <%- model_class = @event.class -%>
-<h1><%= @event.name %></h1>
+<h2><%= @event.name %></h2>
 <br>
 <br>
 <hr>
 
+  <% i = 0 %>
+  <% @tweetsall.each do |tweet| %>
+  <% i = i + 1 %>
+  <% end %>
 
 <div class="container">
-  <h1>ALL</h1>
+  <h2>ALL</h2>
   <br>
+  <%= "Count: " + i.to_s %>
   <table class="table-striped table-bordered ">
     <% i = 0 %>
     <% @tweetsall.each do |tweet| %>
@@ -21,9 +26,18 @@
 </div>
 <br>
 <br>
+
+  <% i = 0 %>
+  <% @tweetsall.each do |tweet| %>
+    <% if tweet.second_pass %>
+      <% i = i + 1 %>
+    <% end %>
+  <% end %>
+
 <div>
-  <h1>Filtered</h1>
+  <h2>Filtered</h2>
   <br>
+  <%= "Count: " + i.to_s  %>
   <table class="table-striped table-bordered">
     <% i = 0 %>
     <% @tweetsall.each do |tweet| %>
@@ -40,7 +54,7 @@
 <br>
 <br>
 <div>
-  <h1>Instagam</h1>
+  <h2>Instagam</h2>
   <br>
   <table class="table-striped table-bordered ">
     <% i = 0 %>

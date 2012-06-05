@@ -33,7 +33,18 @@
    <div class="span2 offset1" >
     <table class="table-striped table-bordered table">
       <tr class="song" >
-        <td><h4> Set List: </h4></td>
+        <td>
+          <input id="play_key" type="hidden" value=<%= @event.opener %>>
+          <button class="btn btn-inverse btn-mini" id="play">
+            <i class="icon-play icon-white"></i>
+          </button>
+          <button class="btn btn-inverse btn-mini" id="next">
+            <i class="icon-forward icon-white"></i>
+          </button>
+        </td>
+      </tr>
+      <tr class="song" >
+        <td><h4> Set List:</h4> </td>
       </tr>
       <tr class="song" >
         <% @songs.each do |song| %>
@@ -43,14 +54,14 @@
     </table>
     <div id="apiswf"></div>
     <dl>
-      <dt>track</dt>
+      <dt>Track</dt>
       <dd id="track"></dd>
-      <dt>position</dt>
+      <dt>Position</dt>
       <dd id="position"></dd>
     </dl>
-    <input id="play_key" value="p909014" type="hidden"><button id="play">Play</button><br>
-    <button id="pause">Pause</button>
-    <button id="next">Next</button>
+    <button class="btn btn-inverse btn-mini" id="stop">
+      <i class="icon-stop icon-white"></i>
+    </button>
   </div>
 
   <div class="span6" id="tweet">
@@ -97,8 +108,12 @@
         <td><h5><%= tweet.text.html_safe %></h5></td>
         <td><span class="tag">
          <% if not tweet.categories.first.nil? %>
-         <% if tweet.categories.first.name != ("Anticipation" || "On Way To Concert" || "After The Concert") %>
-         <%= tweet.categories.first.name %>
+           <% if not tweet.categories.first.name ==  "On Way To Concert"  %>
+           <% if not tweet.categories.first.name ==  "Anticipation"  %>
+           <% if not tweet.categories.first.name ==  "After The Concert"  %>
+           <%= tweet.categories.first.name %>
+         <% end %>
+         <% end %>
          <% end %>
          <% end %>
        </h9></span>
