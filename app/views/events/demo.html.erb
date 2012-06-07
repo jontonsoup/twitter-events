@@ -105,12 +105,12 @@
       <% @tweetsall.each do |tweet| %>
       <% if tweet.second_pass == true %>
       <tr class="tweet" >
+        <% if not tweet.categories.first.name ==  "On Way To Concert"  %>
+        <% if not tweet.categories.first.name ==  "Anticipation"  %>
+        <% if not tweet.categories.first.name ==  "After The Concert"  %>        
         <td><h5><%= tweet.text.html_safe %></h5></td>
         <td><span class="tag">
          <% if not tweet.categories.first.nil? %>
-           <% if not tweet.categories.first.name ==  "On Way To Concert"  %>
-           <% if not tweet.categories.first.name ==  "Anticipation"  %>
-           <% if not tweet.categories.first.name ==  "After The Concert"  %>
            <%= tweet.categories.first.name %>
          <% end %>
          <% end %>

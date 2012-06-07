@@ -1,3 +1,51 @@
+== Zoun!
+
+Zoun is easy to install, just follow these simple steps:
+1. Install Ruby 1.9.3 and Rails 3.2
+2. Clone this repository
+3. Install and run PostgresSQL on your machine
+4. 'rake db:migrate' to migrate your database
+5. Run 'bundle install'
+6. Zoun! is now ready to capture and display concert data.
+
+The innner workings of Zoun! is a series of rake tasks (which live in the directory (/lib/tasks/). This describes how all the rake tasks are called and used.
+
+== firstpass.rake
+This is a deprecated rake task that was used to test for instagram content
+
+== information.rake
+This task is called from the command line with two arguments 'rake information['the beach boys',06-02-2012]'
+This task is used to populate the venue information into the events table in the database. Before use, the use must enter in the name of the event in line 32.
+
+== instastream.rake
+This task is not actually used by the Zoun! system (yet) but it queries the instagram API for content and places it into the database. This can be used to pull instagram content that may not have been published through Twitter
+
+== locations.rake
+This is a task that will use the googlemaps geocode API to turn a twitter user's reported location to a latlong number pair. It is not used in the Zoun System.
+
+== newfilter.rake
+This task can be used to test out new filtering mechanisms for tweets, it sets all tweets to not-flagged and re-runs the filtering code. This is used after live capture.
+
+== playlist.rake
+This task is called from the command line in the exact same manenr as information.rake (edit the event name in the file as well), but it populates the setlist information from setlist.fm. In the future this is where the generation of rdio playlists will go.
+
+== query.rake
+This task is used to automatically build a query string for the stream.rake task. It is currently incomplete, but it does have the workings to build basic queries, it should work by calling with the same variables as locations.rake and playlist.rake
+
+== stream.rake
+This task is the heart of the Zoun! system. It uses the Twitter filter API and custom filtering code to stream tweets in real-time and filter for good twitter content.
+Usage: There are a series of fields to fill in in the top section of stream.rake. These include, twitter username/password (line 24), filter terms (line 34) and event name (line 41).
+Tweaks: stream.rake includes a word list for dividing tweets into certain categories. These are: lines 51-79. The first lines are positive filterlists, for content we have decided fits into the structure of a concert and line 79 is the negative word list.
+The last bit of stream.rake tags tweets with one of two flags: firstpass or secondpass. Firstpass content has words that are in the positive wordlists and secondpass content has associated instagram pictures. Firstpass content is tagged with the appropriate keywords. Finally we remove all links from tweets and reject tweets that are shorter than 5 words as well as tweets with more than 6 commas (long lists).
+
+
+== Display
+demo.html.erb - is the traditional Zoun view
+
+
+
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
