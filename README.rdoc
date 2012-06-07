@@ -21,13 +21,13 @@ This task is used to populate the venue information into the events table in the
 This task is not actually used by the Zoun! system (yet) but it queries the instagram API for content and places it into the database. This can be used to pull instagram content that may not have been published through Twitter
 
 == locations.rake
-This is a task that will use the googlemaps geocode API to turn a twitter user's reported location to a latlong number pair. It is not used in the Zoun System.
+This is a task that will use the googlemaps geocode API to turn a twitter user's reported location to a latlong number pair. It is not used in the Zoun System. You must change the event name in the code.
 
 == newfilter.rake
 This task can be used to test out new filtering mechanisms for tweets, it sets all tweets to not-flagged and re-runs the filtering code. This is used after live capture.
 
 == playlist.rake
-This task is called from the command line in the exact same manenr as information.rake (edit the event name in the file as well), but it populates the setlist information from setlist.fm. In the future this is where the generation of rdio playlists will go.
+This task is called from the command line in the exact same manenr as information.rake (edit the event name in the file as well), but it populates the setlist information from setlist.fm. In the future this is where the generation of rdio playlists will go. You must change the event name in the code.
 
 == query.rake
 This task is used to automatically build a query string for the stream.rake task. It is currently incomplete, but it does have the workings to build basic queries, it should work by calling with the same variables as locations.rake and playlist.rake
@@ -41,6 +41,9 @@ The last bit of stream.rake tags tweets with one of two flags: firstpass or seco
 
 == Display
 demo.html.erb - is the traditional Zoun view
+
+
+To see the list of events that you have captured, go to /events. There is a rudimentary GUI that will allow you to see the complete set of views. Click the number for the "ALL TWEETS" view, and click "DEMO" for the demo view.
 
 
 
